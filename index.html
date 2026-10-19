@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Math Term Test Review – Melanie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#f6f9ff; --gridline:#dde7fb; --card:#ffffff; --soft:#eef3fd;
+  --ink:#1d2b5c; --muted:#5b6790; --line:#cfdaf3;
+  --red:#e23b3b; --redbg:#fde7e7; --green:#1d9a5b; --greenbg:#ddf5e8;
+  --hl:#ffe066; --hlbg:#fff6cc; --hlink:#6b5200;
+  --c1:#ff6b4a; --c2:#7b4dff; --c3:#0e9f93; --c4:#e48b00; --c5:#2f7fe8; --c6:#d93a77; --c7:#4b9437; --c8:#0090c0;
+  --shapefill:#ffe2d9; --imgfill:#1d2b5c;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121a33; --gridline:#1c2747; --card:#1a2442; --soft:#212c4f;
+    --ink:#eef2ff; --muted:#a9b4d6; --line:#2e3a63;
+    --red:#ff6b6b; --redbg:#3e1f2a; --green:#4fd18b; --greenbg:#173a2c;
+    --hl:#ffd84a; --hlbg:#3a3418; --hlink:#ffe68a;
+    --shapefill:#5a2c22; --imgfill:#cfd8ff;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121a33; --gridline:#1c2747; --card:#1a2442; --soft:#212c4f;
+  --ink:#eef2ff; --muted:#a9b4d6; --line:#2e3a63;
+  --red:#ff6b6b; --redbg:#3e1f2a; --green:#4fd18b; --greenbg:#173a2c;
+  --hl:#ffd84a; --hlbg:#3a3418; --hlink:#ffe68a;
+  --shapefill:#5a2c22; --imgfill:#cfd8ff;
+  color-scheme:dark;
+}
+:root[data-lang="en"] .es{display:none!important}
+:root[data-lang="es"] .en{display:none!important}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;color:var(--ink);font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--gridline) 1px,transparent 1px),linear-gradient(90deg,var(--gridline) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+h1,h2,h3{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.15;margin:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--c5);outline-offset:2px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:2px solid var(--line)}
+.topin{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top h1{font-size:1.15rem;flex:1;min-width:140px}
+.score{display:flex;gap:6px;align-items:center;font-weight:800;font-size:.95rem}
+.pill{background:var(--soft);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.reset{border:2px solid var(--line);background:transparent;border-radius:10px;padding:4px 10px;font-weight:700;font-size:.85rem}
+.lang{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;padding:3px 10px;font-weight:800;font-size:.85rem}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--card)}
+.chips{max-width:860px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;color:var(--ink);font-weight:700;font-size:.85rem;padding:4px 12px;border-radius:999px;border:2px solid var(--c);background:var(--card)}
+
+main{max-width:860px;margin:0 auto;padding:18px 14px 60px}
+.hero{padding:20px 4px 8px}
+.hero h2{font-size:2.3rem;font-weight:800;letter-spacing:-.5px}
+.hero h2 .scribble{display:inline-block;background:linear-gradient(transparent 55%,var(--hl) 55%);padding:0 4px}
+.hero p{max-width:60ch;color:var(--muted);margin:.5rem 0 0}
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.steps>span{background:var(--card);border:2px dashed var(--line);border-radius:12px;padding:6px 12px;font-weight:700;font-size:.92rem}
+
+section.topic{margin-top:34px;background:var(--card);border-radius:22px;border:2px solid var(--line);overflow:hidden}
+.thead{padding:16px 18px 12px;border-bottom:2px solid var(--line);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 18%,var(--card)),var(--card))}
+.thead .tag{display:inline-block;background:var(--c);color:#fff;font-weight:800;font-size:.8rem;border-radius:8px;padding:2px 9px;margin-bottom:6px}
+.thead h2{font-size:1.6rem}
+.thead .alt{color:var(--muted);font-weight:700;font-size:.95rem}
+.tbody{padding:16px 18px}
+.tbody p{margin:.4rem 0 .8rem;max-width:68ch}
+.key{background:var(--hlbg);border-left:5px solid var(--hl);border-radius:10px;padding:10px 14px;margin:12px 0}
+.wd{font-style:italic;color:var(--muted);font-weight:700}
+.lab{background:var(--soft);border-radius:16px;padding:14px;margin:14px 0}
+.lab h3{font-size:1.15rem;margin-bottom:6px}
+.lab .sub{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:2px solid var(--c);background:var(--card);border-radius:12px;padding:7px 13px;font-weight:800}
+.btn.on{background:var(--c);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.out{margin-top:10px;background:var(--card);border-radius:12px;padding:10px 14px;border:2px solid var(--line);min-height:2.6em}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+svg{max-width:100%;height:auto;display:block}
+.gl{stroke:var(--line);stroke-width:1}
+.axis{stroke:var(--ink);stroke-width:2}
+.ax{fill:var(--muted);font-size:12px;font-family:Nunito,sans-serif;font-weight:700}
+.axl{fill:var(--ink);font-size:14px;font-weight:800;font-family:Nunito,sans-serif}
+.orig{fill:var(--shapefill);stroke:var(--c1);stroke-width:3;stroke-linejoin:round}
+.newp{fill:color-mix(in srgb,var(--c5) 30%,transparent);stroke:var(--c5);stroke-width:3;stroke-linejoin:round;animation:pop .45s ease}
+@keyframes pop{from{opacity:0}to{opacity:1}}
+.lbl{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:15px;fill:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--c)}
+input[type=number]{width:90px;border:2px solid var(--line);border-radius:10px;padding:6px 8px;background:var(--card)}
+select{border:2px solid var(--line);border-radius:10px;padding:6px 8px;background:var(--card)}
+.ctl{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;font-weight:700;margin:6px 0}
+.big{font-family:"Baloo 2",sans-serif;font-size:1.3rem;font-weight:800}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.card{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:8px;text-align:center;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.card svg{width:100px;height:80px}
+.card .nm{font-weight:800;line-height:1.2}
+.card .rl{font-size:.82rem;color:var(--muted);line-height:1.3}
+.card .q{color:var(--muted);font-weight:700;font-size:.85rem}
+.card.open{border-color:var(--c)}
+.shp{fill:color-mix(in srgb,var(--c) 22%,transparent);stroke:var(--c);stroke-width:3;stroke-linejoin:round}
+.gtitle{font-weight:800;margin:14px 0 6px}
+
+.nchip{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;border-radius:12px;background:var(--card);border:2px solid var(--line);font-weight:800;padding:0 8px;margin:3px}
+.nchip.hl{background:var(--c);border-color:var(--c);color:#fff}
+.nchip small{font-size:.7rem;color:var(--muted);margin-right:4px}
+.nchip.hl small{color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:460px}
+.pgrid button{aspect-ratio:1;border-radius:10px;border:2px solid var(--line);background:var(--card);font-weight:800;padding:0}
+.pgrid button.pr{background:var(--greenbg);border-color:var(--green);color:var(--green)}
+.pgrid button.co{background:color-mix(in srgb,var(--c4) 22%,var(--card));border-color:var(--c4)}
+.pgrid button.one{background:var(--soft);border-color:var(--muted);border-style:dashed}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.88rem;font-weight:700;margin:8px 0}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px;border:2px solid}
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:10px}
+.rule{border:2px solid var(--line);border-radius:14px;padding:10px;background:var(--card)}
+.rule.yes{border-color:var(--green);background:var(--greenbg)}
+.rule.no{opacity:.85}
+.rule h4{margin:0 0 4px;font-family:"Baloo 2",sans-serif;font-size:1.1rem}
+.digits{font-family:"Baloo 2",sans-serif;font-size:2rem;font-weight:800;letter-spacing:3px}
+.digits .last{background:var(--hl);color:#3a2d00;border-radius:6px;padding:0 4px}
+.ladder{border-collapse:collapse;font-family:"Baloo 2",sans-serif;font-size:1.35rem;font-weight:700}
+.ladder td{padding:2px 14px;text-align:right}
+.ladder td+td{border-left:3px solid var(--ink);text-align:left;color:var(--c)}
+.ladder td.bad{color:var(--red)}
+.stairs{display:flex;align-items:flex-end;gap:4px;margin:10px 0}
+.stairs div{flex:1;background:color-mix(in srgb,var(--c) 25%,var(--card));border:2px solid var(--c);border-radius:8px 8px 0 0;text-align:center;font-weight:800;font-size:.85rem;padding-top:4px}
+.stairs div.m{background:var(--c);color:#fff}
+
+.qzone{border-top:3px dashed var(--line);margin-top:18px;padding-top:12px}
+.qzone>h3{font-size:1.2rem;color:var(--red)}
+.q{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;margin:12px 0}
+.q.done-ok{border-color:var(--green)}
+.qnum{font-family:"Baloo 2",sans-serif;font-weight:800;color:var(--red);font-size:1.05rem}
+.qtext{font-weight:700;margin:.3rem 0 .6rem}
+.fig{margin:6px 0 10px;display:flex;justify-content:center}
+.fig svg{max-width:420px;width:100%}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:2px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-weight:600}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--ink);font-size:.9rem}
+.opt:hover:not(:disabled){border-color:var(--c5)}
+.opt.ok{border-color:var(--green);background:var(--greenbg)}
+.opt.ok b{background:var(--green);border-color:var(--green);color:#fff}
+.opt.no{border-color:var(--red);background:var(--redbg);opacity:.8;animation:shake .35s}
+.opt.no b{background:var(--red);border-color:var(--red);color:#fff}
+.opt:disabled{cursor:default}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.fb{margin-top:10px;border-radius:12px;font-weight:600}
+.fb.hint{background:var(--hlbg);color:var(--hlink);padding:10px 12px}
+.fb.good{background:var(--greenbg);padding:10px 12px}
+.fb .mark{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.15rem}
+.fb.good .mark{color:var(--green)}
+.ladders{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.ladders .who{font-weight:800;text-align:center;margin-bottom:4px}
+.ladders .res{font-weight:800;text-align:center;margin-top:4px}
+.final{margin-top:34px;text-align:center;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px}
+.final .big{font-size:2.2rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:20px}
+.watch{background:var(--redbg);border-left:5px solid var(--red);border-radius:10px;padding:10px 14px;margin:12px 0}
+.watch ul{margin:4px 0 0;padding-left:20px}
+details.step{margin-top:10px;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px 12px;color:var(--ink);font-weight:500}
+details.step summary{cursor:pointer;font-weight:800;color:var(--c5)}
+details.step h5{font-family:"Baloo 2",sans-serif;font-size:1.02rem;margin:12px 0 2px}
+details.step table{border-collapse:collapse;margin:6px 0}
+details.step td,details.step th{border:1px solid var(--line);padding:3px 9px;text-align:center}
+details.step tr.hit td{background:var(--hlbg);font-weight:800}
+details.step ul{margin:4px 0;padding-left:20px}
+.cbt{fill:color-mix(in srgb,var(--c3) 45%,var(--card));stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round}
+.cbf{fill:var(--card);stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round}
+.cbl{fill:color-mix(in srgb,var(--c3) 18%,var(--card));stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round}
+@media (max-width:520px){.top h1{font-size:1rem}.hero h2{font-size:1.9rem}.thead h2{font-size:1.35rem}body{font-size:16px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <h1>📐 <span class="en">Melanie’s Review</span><span class="es">Repaso de Melanie</span></h1>
+    <div class="score"><span class="pill">⭐ <span id="sc1">0</span>/<span class="tot">15</span></span><span class="pill">✅ <span id="sc2">0</span>/<span class="tot">15</span></span></div>
+    <div class="lang" role="group" aria-label="Language / Idioma"><button data-l="en" aria-pressed="true">EN</button><button data-l="es" aria-pressed="false">ES</button></div>
+    <button class="reset" id="reset"><span class="en">Restart</span><span class="es">Reiniciar</span></button>
+  </div>
+  <nav class="chips">
+    <a href="#t1" style="--c:var(--c1)"><span class="en">Cartesian plane</span><span class="es">Plano cartesiano</span></a>
+    <a href="#t2" style="--c:var(--c2)"><span class="en">Triangles &amp; quadrilaterals</span><span class="es">Triángulos y cuadriláteros</span></a>
+    <a href="#t3" style="--c:var(--c3)"><span class="en">Perimeter, area &amp; volume</span><span class="es">Perímetro, área y volumen</span></a>
+    <a href="#t4" style="--c:var(--c4)"><span class="en">Multiples &amp; divisors</span><span class="es">Múltiplos y divisores</span></a>
+    <a href="#t5" style="--c:var(--c5)"><span class="en">Divisibility</span><span class="es">Divisibilidad</span></a>
+    <a href="#t6" style="--c:var(--c6)"><span class="en">Prime &amp; composite</span><span class="es">Primos y compuestos</span></a>
+    <a href="#t7" style="--c:var(--c7)"><span class="en">Prime factorization</span><span class="es">Factorización</span></a>
+    <a href="#t8" style="--c:var(--c8)"><span class="en">Measurement</span><span class="es">Medidas</span></a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h2>Math Term Test: <span class="scribble"><span class="en">let’s practice!</span><span class="es">¡a practicar!</span></span></h2>
+    <p><span class="en">All the topics for the 4th grade test, explained with examples you can touch and move. At the end of each topic you’ll find the test questions to answer, plus the September 15th diagnostic test and the bonus cube.</span><span class="es">Todos los temas del examen de 4to grado, explicados con ejemplos que puedes tocar y mover. Al final de cada tema están las preguntas del examen para responder, además del examen diagnóstico del 15 de septiembre y el bonus del cubo.</span></p>
+    <div class="steps"><span><span class="en">1. Read the explanation</span><span class="es">1. Lee la explicación</span></span><span><span class="en">2. Play with the example</span><span class="es">2. Juega con el ejemplo</span></span><span><span class="en">3. Answer the question</span><span class="es">3. Responde la pregunta</span></span></div>
+  </div>
+
+  <!-- 1 -->
+  <section class="topic" id="t1" style="--c:var(--c1)">
+    <div class="thead"><span class="tag"><span class="en">Topic 1</span><span class="es">Tema 1</span></span><h2><span class="en">Movements in the Cartesian plane</span><span class="es">Movimientos en el plano cartesiano</span></h2><div class="alt"><span class="en">Similarity and congruence</span><span class="es">Semejanza y congruencia</span></div></div>
+    <div class="tbody">
+      <p><span class="en">The Cartesian plane is like a map made of squares. Every point has an address <b>(x, y)</b>: first you walk right along the <b>X</b> axis → and then you go up the <b>Y</b> axis ↑.</span><span class="es">El plano cartesiano es como un mapa de cuadritos. Cada punto tiene una dirección <b>(x, y)</b>: primero caminas hacia la derecha por el eje <b>X</b> → y después subes por el eje <b>Y</b> ↑.</span></p>
+      <div class="lab">
+        <h3><span class="en">Tap a point where the lines cross</span><span class="es">Toca un cruce de la cuadrícula</span></h3>
+        <p class="sub"><span class="en">You’ll see its address (x, y). Then try the movements with the buttons.</span><span class="es">Verás su dirección (x, y). Luego prueba los movimientos con los botones.</span></p>
+        <div class="row" id="w1btns">
+          <button class="btn" data-t="tras">🚚 <span class="en">Translation</span><span class="es">Traslación</span></button>
+          <button class="btn" data-t="refl">🪞 <span class="en">Reflection</span><span class="es">Reflexión</span></button>
+          <button class="btn" data-t="rot">🔄 <span class="en">Rotation</span><span class="es">Rotación</span></button>
+          <button class="btn" data-t="amp">🔍 <span class="en">Enlarge</span><span class="es">Ampliar</span></button>
+        </div>
+        <div id="w1wrap" style="max-width:380px;margin:10px auto 0"></div>
+        <div class="out" id="w1out"><span class="en">The orange figure is the original. Tap a button to move it.</span><span class="es">La figura naranja es la original. Toca un botón para moverla.</span></div>
+      </div>
+      <div class="key">
+        <span class="en"><b>Congruent</b>: same shape and same size, like identical twins. Translation, reflection and rotation always make congruent figures.<br><b>Similar</b>: same shape but a different size, like an enlarged photo.</span>
+        <span class="es"><b>Congruentes</b> <span class="wd">(congruent)</span>: misma forma y mismo tamaño, como dos gemelas idénticas. Traslación, reflexión y rotación siempre dan figuras congruentes.<br><b>Semejantes</b> <span class="wd">(similar)</span>: misma forma pero diferente tamaño, como una foto ampliada.</span>
+      </div>
+      <p><span class="en">The points of the new figure get a little mark: point A moves and becomes <b>A’</b> (we say “A prime”).</span><span class="es">Los puntos de la figura nueva se nombran con una comillita: el punto A se mueve y se convierte en <b>A’</b> (se lee “A prima”).</span></p>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="3"></div></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="topic" id="t2" style="--c:var(--c2)">
+    <div class="thead"><span class="tag"><span class="en">Topic 2</span><span class="es">Tema 2</span></span><h2><span class="en">Classification of triangles and quadrilaterals</span><span class="es">Clasificación de triángulos y cuadriláteros</span></h2></div>
+    <div class="tbody">
+      <p><span class="en">Triangles have 3 sides and we classify them in two ways: <b>by their sides</b> and <b>by their angles</b>. Quadrilaterals have 4 sides. Tap each card to find out its name.</span><span class="es">Los triángulos tienen 3 lados y se clasifican de dos maneras: <b>por sus lados</b> y <b>por sus ángulos</b>. Los cuadriláteros tienen 4 lados. Toca cada tarjeta para descubrir su nombre.</span></p>
+      <div class="lab">
+        <div class="gtitle"><span class="en">Triangles by their sides (sides with the same color are equal)</span><span class="es">Triángulos por sus lados (los lados del mismo color son iguales)</span></div>
+        <div class="cards" id="cTriS"></div>
+        <div class="gtitle"><span class="en">Triangles by their angles</span><span class="es">Triángulos por sus ángulos</span></div>
+        <div class="cards" id="cTriA"></div>
+        <div class="gtitle"><span class="en">Quadrilaterals</span><span class="es">Cuadriláteros</span></div>
+        <div class="cards" id="cQuad"></div>
+        <div class="gtitle"><span class="en">Other polygons</span><span class="es">Otros polígonos</span></div>
+        <div class="cards" id="cPoly"></div>
+      </div>
+      <div class="key"><span class="en">Trick: the square, the rectangle and the rhombus are also <b>parallelograms</b>, because they have two pairs of parallel sides. A rhombus with right angles is a square.</span><span class="es">Truco: el cuadrado, el rectángulo y el rombo también son <b>paralelogramos</b> <span class="wd">(parallelograms)</span>, porque tienen dos pares de lados paralelos. Un rombo con ángulos rectos es un cuadrado.</span></div>
+      <div class="lab">
+        <h3><span class="en">Perpendicular lines</span><span class="es">Líneas perpendiculares</span></h3>
+        <p class="sub"><span class="en">Move the slider to turn the line. When are they perpendicular?</span><span class="es">Mueve la barra para girar la línea. ¿Cuándo son perpendiculares?</span></p>
+        <div id="perp" style="max-width:340px;margin:0 auto"></div>
+        <input type="range" id="perpR" min="10" max="180" step="5" value="45" aria-label="Angle">
+        <div class="out" id="perpOut"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="2,4"></div></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="topic" id="t3" style="--c:var(--c3)">
+    <div class="thead"><span class="tag"><span class="en">Topic 3</span><span class="es">Tema 3</span></span><h2><span class="en">Perimeter, area and volume</span><span class="es">Perímetro, área y volumen</span></h2></div>
+    <div class="tbody">
+      <div class="key">
+        <span class="en"><b>Perimeter</b> = the border. Add all the sides, like building a fence. Measured in <b>m</b>.<br><b>Area</b> = the surface. How many squares fit inside, like laying tiles. Measured in <b>m²</b>.<br><b>Volume</b> = the space inside a box. How many little cubes fit. Measured in <b>m³</b>.</span>
+        <span class="es"><b>Perímetro</b> <span class="wd">(perimeter)</span> = el borde. Sumas todos los lados, como poner una cerca. Se mide en <b>m</b>.<br><b>Área</b> <span class="wd">(area)</span> = la superficie. Cuántos cuadritos caben adentro, como poner baldosas. Se mide en <b>m²</b>.<br><b>Volumen</b> <span class="wd">(volume)</span> = el espacio dentro de una caja. Cuántos cubitos caben. Se mide en <b>m³</b>.</span>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Perimeter and area of a rectangle</span><span class="es">Perímetro y área de un rectángulo</span></h3>
+        <p class="sub"><span class="en">If the length and the width are equal, it’s a square.</span><span class="es">Si el largo y el ancho son iguales, es un cuadrado.</span></p>
+        <div class="ctl"><span><span class="en">Length</span><span class="es">Largo</span></span><input type="range" id="aL" min="1" max="8" value="4"><span id="aLv"></span></div>
+        <div class="ctl"><span><span class="en">Width</span><span class="es">Ancho</span></span><input type="range" id="aW" min="1" max="8" value="3"><span id="aWv"></span></div>
+        <div id="areaSvg" style="max-width:300px;margin:0 auto"></div>
+        <div class="out" id="areaOut"></div>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Perimeter of a regular polygon</span><span class="es">Perímetro de un polígono regular</span></h3>
+        <p class="sub"><span class="en">Regular = all its sides are the same length. Perimeter = number of sides × length of one side.</span><span class="es">Regular = todos sus lados miden lo mismo. Perímetro = número de lados × medida de un lado.</span></p>
+        <div class="ctl"><span><span class="en">Sides</span><span class="es">Lados</span></span><input type="range" id="pN" min="3" max="8" value="3"><span id="pNv"></span></div>
+        <div class="ctl"><span><span class="en">Length</span><span class="es">Medida</span></span><input type="range" id="pS" min="1" max="12" value="4"><span id="pSv"></span></div>
+        <div id="polySvg" style="max-width:220px;margin:0 auto"></div>
+        <div class="out" id="polyOut"></div>
+      </div>
+      <div class="key">
+        <span class="en"><b>Area formulas</b><br>Square: side × side<br>Rectangle: length × width<br>Triangle: base × height ÷ 2<br>Area units always have a little 2: m², cm².</span>
+        <span class="es"><b>Fórmulas del área</b><br>Cuadrado: lado × lado<br>Rectángulo: largo × ancho<br>Triángulo: base × altura ÷ 2<br>Las unidades del área siempre llevan el ²: m², cm².</span>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Why does the triangle use ÷ 2?</span><span class="es">¿Por qué el triángulo lleva ÷ 2?</span></h3>
+        <p class="sub"><span class="en">A triangle is exactly half of a rectangle with the same base and height.</span><span class="es">Un triángulo es exactamente la mitad de un rectángulo con la misma base y altura.</span></p>
+        <div class="ctl"><span>Base</span><input type="range" id="tB" min="2" max="10" step="2" value="6"><span id="tBv"></span></div>
+        <div class="ctl"><span><span class="en">Height</span><span class="es">Altura</span></span><input type="range" id="tH" min="1" max="6" value="3"><span id="tHv"></span></div>
+        <div id="tSvg" style="max-width:340px;margin:0 auto"></div>
+        <div class="out" id="tOut"></div>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Area of a shaded region</span><span class="es">Área de una región sombreada</span></h3>
+        <p class="sub"><span class="en">Big shape minus the hole in the middle.</span><span class="es">La figura grande menos el hueco del centro.</span></p>
+        <div class="ctl"><span><span class="en">Big side</span><span class="es">Lado grande</span></span><input type="range" id="sB" min="4" max="10" value="6"><span id="sBv"></span></div>
+        <div class="ctl"><span><span class="en">Small side</span><span class="es">Lado pequeño</span></span><input type="range" id="sS" min="1" max="8" value="2"><span id="sSv"></span></div>
+        <div id="sSvg" style="max-width:260px;margin:0 auto"></div>
+        <div class="out" id="sOut"></div>
+      </div>
+      <div class="watch">
+        <b><span class="en">Watch out!</span><span class="es">¡Cuidado!</span></b>
+        <ul>
+          <li><span class="en">Area is multiplication: 9 × 4, not 9 + 4 + 9 + 4 (that is the perimeter).</span><span class="es">El área es multiplicación: 9 × 4, no 9 + 4 + 9 + 4 (eso es el perímetro).</span></li>
+          <li><span class="en">In a square, multiply the side only once: 2 × 2, not 4 × 4.</span><span class="es">En un cuadrado, se multiplica el lado una sola vez: 2 × 2, no 4 × 4.</span></li>
+          <li><span class="en">Triangle: never forget to divide by 2.</span><span class="es">Triángulo: nunca olvides dividir entre 2.</span></li>
+          <li><span class="en">Shaded region: subtract, don’t multiply.</span><span class="es">Región sombreada: se resta, no se multiplica.</span></li>
+          <li><span class="en">Missing cubes: total of the full cube minus the cubes that are already there.</span><span class="es">Cubos que faltan: el total del cubo completo menos los cubos que ya están.</span></li>
+        </ul>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Volume of a box</span><span class="es">Volumen de una caja</span></h3>
+        <p class="sub"><span class="en">First fill the floor (length × width), then stack layers (height).</span><span class="es">Primero llenas el piso (largo × ancho) y luego apilas capas (alto).</span></p>
+        <div class="ctl"><span><span class="en">Length</span><span class="es">Largo</span></span><input type="range" id="vL" min="1" max="8" value="4"><span id="vLv"></span></div>
+        <div class="ctl"><span><span class="en">Width</span><span class="es">Ancho</span></span><input type="range" id="vW" min="1" max="5" value="2"><span id="vWv"></span></div>
+        <div class="ctl"><span><span class="en">Height</span><span class="es">Alto</span></span><input type="range" id="vH" min="1" max="4" value="3"><span id="vHv"></span></div>
+        <div class="row" id="volLayers" style="justify-content:center"></div>
+        <div class="out" id="volOut"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="12,13,14,bonus"></div></div>
+      <div class="qzone"><h3>📝 <span class="en">Diagnostic test (September 15th)</span><span class="es">Examen diagnóstico (15 de septiembre)</span></h3><div class="qs" data-qs="d1a,d1b,d1c,dB"></div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="topic" id="t4" style="--c:var(--c4)">
+    <div class="thead"><span class="tag"><span class="en">Topic 4</span><span class="es">Tema 4</span></span><h2><span class="en">Multiples and divisors</span><span class="es">Múltiplos y divisores</span></h2></div>
+    <div class="tbody">
+      <div class="key">
+        <span class="en"><b>Multiples</b>: the times table of the number. Multiples of 5: 5, 10, 15, 20… They never end!<br><b>Divisors</b>: the numbers that divide it exactly, with nothing left over. Divisors of 6: 1, 2, 3, 6. They do end.</span>
+        <span class="es"><b>Múltiplos</b> <span class="wd">(multiples)</span>: es la tabla de multiplicar del número. Múltiplos de 5: 5, 10, 15, 20… ¡Nunca se acaban!<br><b>Divisores</b> <span class="wd">(divisors)</span>: los números que lo dividen exacto, sin sobrar nada. Divisores de 6: 1, 2, 3, 6. Sí se acaban.</span>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Find the divisors</span><span class="es">Busca los divisores</span></h3>
+        <p class="sub"><span class="en">Trick: look for pairs that multiply to the number. Each pair makes a rectangle of dots.</span><span class="es">Truco: busca parejas que multiplicadas den el número. Cada pareja forma un rectángulo de puntos.</span></p>
+        <div class="row"><label for="dN"><b><span class="en">Number:</span><span class="es">Número:</span></b></label><input type="number" id="dN" min="1" max="100" value="12"></div>
+        <div id="dOut" class="out"></div>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Multiples in order</span><span class="es">Los múltiplos en orden</span></h3>
+        <p class="sub"><span class="en">Look at the position: first, second, third…</span><span class="es">Fíjate en la posición: primero, segundo, tercero…</span></p>
+        <div class="row"><label for="mN"><b><span class="en">Number:</span><span class="es">Número:</span></b></label><input type="number" id="mN" min="1" max="12" value="4"></div>
+        <div id="mOut" class="out"></div>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Common multiples: where do they meet?</span><span class="es">Múltiplos comunes: ¿dónde coinciden?</span></h3>
+        <p class="sub"><span class="en">Two frogs jump from 0. The stars show where both of them land.</span><span class="es">Dos ranas saltan desde el 0. Las estrellas marcan donde caen las dos.</span></p>
+        <div class="row"><label><span class="en">Frog A jumps by</span><span class="es">Rana A salta de</span> <select id="jA"></select></label><label><span class="en">Frog B jumps by</span><span class="es">Rana B salta de</span> <select id="jB"></select></label></div>
+        <div class="scroll"><div id="jSvg" style="min-width:520px"></div></div>
+        <div id="jOut" class="out"></div>
+      </div>
+      <div class="key"><span class="en">The first number where they meet is the <b>least common multiple (LCM)</b>. It helps us know when two things that repeat will happen at the same time again.</span><span class="es">El primer número donde coinciden se llama <b>mínimo común múltiplo</b> <span class="wd">(least common multiple)</span>. Sirve para saber cuándo dos cosas que se repiten vuelven a pasar al mismo tiempo.</span></div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="1,8,15"></div></div>
+      <div class="key"><span class="en"><b>What about zero?</b> 0 is a multiple of every number, because any number × 0 = 0. That’s why the diagnostic test lists the first five multiples of 2 as 0, 2, 4, 6, 8. But 0 is <b>never a divisor</b>: you can’t divide by 0. Divisors always go from 1 up to the number itself.</span><span class="es"><b>¿Y el cero?</b> El 0 es múltiplo de todos los números, porque cualquier número × 0 = 0. Por eso el examen diagnóstico pide los primeros cinco múltiplos de 2 así: 0, 2, 4, 6, 8. Pero el 0 <b>nunca es divisor</b>: no se puede dividir entre 0. Los divisores siempre van desde el 1 hasta el mismo número.</span></div>
+      <div class="watch"><b><span class="en">Watch out!</span><span class="es">¡Cuidado!</span></b>
+        <ul>
+          <li><span class="en">1 is NOT a multiple of 2 or 8. After 0 comes the number itself: 0, 8, 16, 24, 32.</span><span class="es">El 1 NO es múltiplo de 2 ni de 8. Después del 0 viene el mismo número: 0, 8, 16, 24, 32.</span></li>
+          <li><span class="en">Don’t write 0 in a list of divisors, and always end with the number itself.</span><span class="es">No escribas el 0 en una lista de divisores, y siempre termina con el mismo número.</span></li>
+          <li><span class="en">Check each number: 2 does not divide 21 (21 is odd), but 7 does (3 × 7 = 21).</span><span class="es">Revisa cada número: el 2 no divide a 21 (21 es impar), pero el 7 sí (3 × 7 = 21).</span></li>
+        </ul>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Diagnostic test (September 15th)</span><span class="es">Examen diagnóstico (15 de septiembre)</span></h3><div class="qs" data-qs="d2a,d2b,d3a,d3b,d3c"></div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="topic" id="t5" style="--c:var(--c5)">
+    <div class="thead"><span class="tag"><span class="en">Topic 5</span><span class="es">Tema 5</span></span><h2><span class="en">Divisibility rules</span><span class="es">Reglas de divisibilidad</span></h2></div>
+    <div class="tbody">
+      <p><span class="en">They are tricks to know if a number can be divided exactly without doing the division.</span><span class="es">Son trucos para saber si un número se puede dividir exacto sin hacer la división.</span></p>
+      <div class="key">
+        <span class="en"><b>By 2:</b> it ends in an even number (0, 2, 4, 6, 8).<br><b>By 3:</b> add its digits; the result is in the 3 times table.<br><b>By 5:</b> it ends in 0 or 5.<br><b>By 10:</b> it ends in 0.</span>
+        <span class="es"><b>Entre 2:</b> termina en número par (0, 2, 4, 6, 8).<br><b>Entre 3:</b> sumas sus cifras y el resultado está en la tabla del 3.<br><b>Entre 5:</b> termina en 0 o en 5.<br><b>Entre 10:</b> termina en 0.</span>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Divisibility detector</span><span class="es">Detector de divisibilidad</span></h3>
+        <p class="sub"><span class="en">Type any number and see which rules it follows.</span><span class="es">Escribe cualquier número y mira qué reglas cumple.</span></p>
+        <div class="row"><input type="number" id="dvN" min="1" max="999999" value="135" aria-label="Number"></div>
+        <div class="digits" id="dvDigits" style="margin-top:8px"></div>
+        <div class="rules" id="dvRules"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="6"></div></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="topic" id="t6" style="--c:var(--c6)">
+    <div class="thead"><span class="tag"><span class="en">Topic 6</span><span class="es">Tema 6</span></span><h2><span class="en">Prime and composite numbers</span><span class="es">Números primos y compuestos</span></h2></div>
+    <div class="tbody">
+      <div class="key">
+        <span class="en"><b>Prime</b>: it has only 2 divisors, 1 and itself. Examples: 2, 3, 5, 7, 11.<br><b>Composite</b>: it has more than 2 divisors. Example: 6 (1, 2, 3, 6).<br><b>Number 1</b> is special: it is neither prime nor composite. 0 is never a divisor.</span>
+        <span class="es"><b>Primo</b> <span class="wd">(prime)</span>: solo tiene 2 divisores, el 1 y él mismo. Ejemplos: 2, 3, 5, 7, 11.<br><b>Compuesto</b> <span class="wd">(composite)</span>: tiene más de 2 divisores. Ejemplo: 6 (1, 2, 3, 6).<br><b>El 1</b> es especial: no es primo ni compuesto. El 0 nunca es divisor de nadie.</span>
+      </div>
+      <div class="lab">
+        <h3><span class="en">Tap a number to discover it</span><span class="es">Toca un número para descubrirlo</span></h3>
+        <div class="legend"><span><i style="background:var(--greenbg);border-color:var(--green)"></i><span class="en">Prime</span><span class="es">Primo</span></span><span><i style="background:color-mix(in srgb,var(--c4) 22%,var(--card));border-color:var(--c4)"></i><span class="en">Composite</span><span class="es">Compuesto</span></span><span><i style="background:var(--soft);border-color:var(--muted);border-style:dashed"></i><span class="en">Neither</span><span class="es">Ni primo ni compuesto</span></span></div>
+        <div class="pgrid" id="pGrid"></div>
+        <div class="row" style="margin-top:10px"><button class="btn" id="pAll"><span class="en">Show all</span><span class="es">Mostrar todos</span></button><button class="btn" id="pHide"><span class="en">Hide all</span><span class="es">Ocultar todos</span></button></div>
+        <div class="out" id="pOut"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="5,9"></div></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="topic" id="t7" style="--c:var(--c7)">
+    <div class="thead"><span class="tag"><span class="en">Topic 7</span><span class="es">Tema 7</span></span><h2><span class="en">Prime factorization</span><span class="es">Descomposición en factores primos</span></h2></div>
+    <div class="tbody">
+      <p><span class="en">It means breaking a number into multiplications of <b>only prime numbers</b>. We use a “ladder”: on the right we always divide by the smallest prime we can (2, 3, 5, 7…) until we reach 1.</span><span class="es">Es romper un número en multiplicaciones de <b>solo números primos</b>. Se hace con una “escalera”: a la derecha divides siempre entre el primo más pequeño que se pueda (2, 3, 5, 7…) hasta llegar a 1.</span></p>
+      <div class="key"><span class="en">Golden rule: on the right side of the line <b>only prime numbers go</b>. If you see a 4, 6 or 10, it’s wrong! Repeating a prime (2 × 2) is allowed.</span><span class="es">Regla de oro: a la derecha de la línea <b>solo van números primos</b>. Si aparece un 4, 6 o 10, ¡está mal! Repetir un primo (2 × 2) sí está permitido.</span></div>
+      <div class="lab">
+        <h3><span class="en">Ladder step by step</span><span class="es">Escalera paso a paso</span></h3>
+        <div class="row"><label for="fN"><b><span class="en">Number:</span><span class="es">Número:</span></b></label><input type="number" id="fN" min="2" max="500" value="36"><button class="btn on" id="fStep"><span class="en">Next step</span><span class="es">Siguiente paso</span></button><button class="btn" id="fReset"><span class="en">Start over</span><span class="es">Empezar de nuevo</span></button></div>
+        <div style="display:flex;justify-content:center;margin-top:12px"><table class="ladder" id="fTable"></table></div>
+        <div class="out" id="fOut"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="10"></div></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="topic" id="t8" style="--c:var(--c8)">
+    <div class="thead"><span class="tag"><span class="en">Also on the test</span><span class="es">Extra del examen</span></span><h2><span class="en">Length and capacity</span><span class="es">Medidas de longitud y capacidad</span></h2></div>
+    <div class="tbody">
+      <p><span class="en">To compare measurements, first change them all to the <b>same unit</b>. Each step on the staircase is worth 10 times the one below it.</span><span class="es">Para comparar medidas, primero hay que pasarlas todas a la <b>misma unidad</b>. Cada escalón de la escalera vale 10 veces el de abajo.</span></p>
+      <div class="stairs" id="stairs"></div>
+      <div class="key"><span class="en">Going down a step = multiply × 10. Going up a step = divide ÷ 10.</span><span class="es">Bajar un escalón = multiplicar × 10. Subir un escalón = dividir ÷ 10.</span><br>1 hm = 100 m · 1 m = 100 cm · 1 L = 1000 ml</div>
+      <div class="lab">
+        <h3><span class="en">Meter converter</span><span class="es">Convertidor a metros</span></h3>
+        <div class="row"><input type="number" id="uV" value="3" min="0" aria-label="Amount"><select id="uU"><option>km</option><option selected>hm</option><option>dam</option><option>m</option><option>dm</option><option>cm</option><option>mm</option></select></div>
+        <div class="out" id="uOut"></div>
+      </div>
+      <div class="lab">
+        <h3><span class="en">The measuring jug</span><span class="es">La jarra medidora</span></h3>
+        <p class="sub"><span class="en">MAX is the most it can hold. Move the slider to pour water.</span><span class="es">MAX es lo máximo que le cabe. Mueve la barra para echar agua.</span></p>
+        <div id="jug" style="max-width:220px;margin:0 auto"></div>
+        <input type="range" id="jugR" min="0" max="1000" step="100" value="300" aria-label="Milliliters">
+        <div class="out" id="jugOut"></div>
+      </div>
+      <div class="qzone"><h3>📝 <span class="en">Test questions</span><span class="es">Preguntas del examen</span></h3><div class="qs" data-qs="7,11"></div></div>
+    </div>
+  </section>
+
+  <div class="final">
+    <div class="big" id="finalTxt"></div>
+    <p id="finalMsg" style="color:var(--muted);margin:.3rem 0 0"></p>
+  </div>
+  <footer><span class="en">Made for Melanie · 4th grade</span><span class="es">Hecho para Melanie · 4to grado</span></footer>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const t=(en,es)=>`<span class="en">${en}</span><span class="es">${es}</span>`;
+let LANG='en';
+
+/* ---------- Language ---------- */
+function setLang(l){
+  LANG=l;document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+  document.title=l==='en'?'Math Term Test Review – Melanie':'Repaso Math Term Test – Melanie';
+  try{localStorage.setItem('mel-lang',l)}catch(e){}
+  if(window.drawU)drawU();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
+/* ---------- Plane helper ---------- */
+function makePlane(xm,ym,u){
+  const pad=30,top=22,W=pad+xm*u+22,H=top+ym*u+30;
+  const X=x=>pad+x*u, Y=y=>top+(ym-y)*u;
+  let g='';
+  for(let i=0;i<=xm;i++) g+=`<line class="gl" x1="${X(i)}" y1="${Y(0)}" x2="${X(i)}" y2="${Y(ym)}"/><text class="ax" x="${X(i)}" y="${Y(0)+18}" text-anchor="middle">${i}</text>`;
+  for(let j=1;j<=ym;j++) g+=`<line class="gl" x1="${X(0)}" y1="${Y(j)}" x2="${X(xm)}" y2="${Y(j)}"/><text class="ax" x="${X(0)-9}" y="${Y(j)+4}" text-anchor="end">${j}</text>`;
+  g+=`<line class="axis" x1="${X(0)}" y1="${Y(0)}" x2="${X(xm)+12}" y2="${Y(0)}"/><line class="axis" x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="${Y(ym)-12}"/>`;
+  g+=`<text class="axl" x="${X(xm)+14}" y="${Y(0)+5}">X</text><text class="axl" x="${X(0)-5}" y="${Y(ym)-12}" text-anchor="end">Y</text>`;
+  return {X,Y,W,H,g,pad,top,u,xm,ym};
+}
+const pts=(a,P)=>a.map(([x,y])=>`${P.X(x)},${P.Y(y)}`).join(' ');
+
+/* ---------- Topic 1 ---------- */
+const P1=makePlane(8,8,38);
+const base=[[1,1],[3,1],[3,2],[2,2],[2,4],[1,4]];
+$('#w1wrap').innerHTML=`<svg id="w1" viewBox="0 0 ${P1.W} ${P1.H}" role="img" aria-label="Cartesian plane">${P1.g}
+<polygon class="orig" points="${pts(base,P1)}"/><text class="lbl" x="${P1.X(1)-14}" y="${P1.Y(4)-4}">A</text>
+<g id="w1g"></g><g id="w1p"></g></svg>`;
+const T={
+  tras:{f:([x,y])=>[x+4,y+3],m:t('🚚 <b>Translation</b>: the figure <b>slides</b> without turning or flipping. Here it moved 4 squares right and 3 up. A(1, 4) → A’(5, 7). Result: <b>congruent</b>.','🚚 <b>Traslación</b> <span class="wd">(translation)</span>: la figura se <b>desliza</b> sin girar ni voltearse. Aquí se movió 4 cuadros a la derecha y 3 hacia arriba. A(1, 4) → A’(5, 7). Resultado: <b>congruentes</b>.')},
+  refl:{f:([x,y])=>[8-x,y],m:t('🪞 <b>Reflection</b>: like a <b>mirror</b>. The figure flips over the dotted line. It’s backwards, but the same size. Result: <b>congruent</b>.','🪞 <b>Reflexión</b> <span class="wd">(reflection)</span>: como un <b>espejo</b>. La figura se voltea sobre la línea punteada. Quedó al revés, pero igual de grande. Resultado: <b>congruentes</b>.'),x:P=>`<line x1="${P.X(4)}" y1="${P.Y(0)}" x2="${P.X(4)}" y2="${P.Y(8)}" stroke="var(--c6)" stroke-width="3" stroke-dasharray="7 5"/>`},
+  rot:{f:([x,y])=>[y,8-x],m:t('🔄 <b>Rotation</b>: the figure <b>turns</b> around a point (the pink dot), like the hands of a clock. Here it made a quarter turn. Result: <b>congruent</b>.','🔄 <b>Rotación</b> <span class="wd">(rotation)</span>: la figura <b>gira</b> alrededor de un punto (el punto rosado), como las manecillas del reloj. Aquí dio un cuarto de vuelta. Resultado: <b>congruentes</b>.'),x:P=>`<circle cx="${P.X(4)}" cy="${P.Y(4)}" r="6" fill="var(--c6)"/>`},
+  amp:{f:([x,y])=>[2*x+1,2*y-1],m:t('🔍 <b>Enlargement</b>: the figure grew to double size. Same <b>shape</b> but a different <b>size</b>. Result: <b>similar</b>, but NOT congruent.','🔍 <b>Ampliación</b>: la figura creció al doble. Tiene la misma <b>forma</b> pero otro <b>tamaño</b>. Resultado: <b>semejantes</b> <span class="wd">(similar)</span>, pero NO congruentes.')}
+};
+document.querySelectorAll('#w1btns .btn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#w1btns .btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const tr=T[b.dataset.t],np=base.map(tr.f),a=np[4];
+  $('#w1g').innerHTML=(tr.x?tr.x(P1):'')+`<polygon class="newp" points="${pts(np,P1)}"/><text class="lbl" x="${P1.X(a[0])+6}" y="${P1.Y(a[1])-6}">A’</text>`;
+  $('#w1out').innerHTML=tr.m;
+});
+const w1=$('#w1');
+w1.addEventListener('click',e=>{
+  const pt=w1.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;
+  const p=pt.matrixTransform(w1.getScreenCTM().inverse());
+  const x=Math.round((p.x-P1.pad)/P1.u),y=Math.round((P1.top+P1.ym*P1.u-p.y)/P1.u);
+  if(x<0||x>8||y<0||y>8)return;
+  $('#w1p').innerHTML=`<line x1="${P1.X(0)}" y1="${P1.Y(0)}" x2="${P1.X(x)}" y2="${P1.Y(0)}" stroke="var(--c4)" stroke-width="5" opacity=".7"/><line x1="${P1.X(x)}" y1="${P1.Y(0)}" x2="${P1.X(x)}" y2="${P1.Y(y)}" stroke="var(--c3)" stroke-width="5" opacity=".7"/><circle cx="${P1.X(x)}" cy="${P1.Y(y)}" r="7" fill="var(--c2)"/><text class="lbl" x="${P1.X(x)+9}" y="${P1.Y(y)+18}">(${x}, ${y})</text>`;
+  $('#w1out').innerHTML=t(`📍 Point <b>(${x}, ${y})</b>: walk <b>${x}</b> to the right along X → and go up <b>${y}</b> along Y ↑.`,`📍 Punto <b>(${x}, ${y})</b>: caminas <b>${x}</b> a la derecha por X → y subes <b>${y}</b> por Y ↑.`);
+});
+
+/* ---------- Topic 2 ---------- */
+function regPts(n,cx,cy,r,rot=-90){return Array.from({length:n},(_,i)=>{const a=(rot+360*i/n)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]})}
+const P=a=>a.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' ');
+function sideLines(p,cols){return p.map((a,i)=>{const b=p[(i+1)%p.length];return`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${cols[i]}" stroke-width="5" stroke-linecap="round"/>`}).join('')}
+const triS=[
+  {n:t('Equilateral','Equilátero'),r:t('3 equal sides','3 lados iguales'),s:sideLines([[50,8],[90,74],[10,74]],['var(--c2)','var(--c2)','var(--c2)'])},
+  {n:t('Isosceles','Isósceles'),r:t('2 equal sides','2 lados iguales'),s:sideLines([[50,4],[76,76],[24,76]],['var(--c2)','var(--c4)','var(--c2)'])},
+  {n:t('Scalene','Escaleno'),r:t('3 different sides','3 lados diferentes'),s:sideLines([[14,70],[92,76],[36,8]],['var(--c2)','var(--c4)','var(--c3)'])}
+];
+const triA=[
+  {n:t('Acute','Acutángulo'),r:t('3 acute angles (less than 90°)','3 ángulos agudos (menores de 90°)'),s:`<polygon class="shp" points="28,74 86,74 56,10"/>`},
+  {n:t('Right','Rectángulo'),r:t('1 right angle (90°)','1 ángulo recto (90°)'),s:`<polygon class="shp" points="20,8 20,74 86,74"/><path d="M20 62 H32 V74" fill="none" stroke="var(--red)" stroke-width="2.5"/>`},
+  {n:t('Obtuse','Obtusángulo'),r:t('1 obtuse angle (more than 90°)','1 ángulo obtuso (mayor de 90°)'),s:`<polygon class="shp" points="8,74 58,74 94,28"/>`}
+];
+const quad=[
+  {n:t('Square','Cuadrado'),r:t('4 equal sides and 4 right angles','4 lados iguales y 4 ángulos rectos'),s:`<polygon class="shp" points="22,8 78,8 78,64 22,64"/>`},
+  {n:t('Rectangle','Rectángulo'),r:t('opposite sides equal and 4 right angles','lados opuestos iguales y 4 ángulos rectos'),s:`<polygon class="shp" points="6,18 94,18 94,64 6,64"/>`},
+  {n:t('Rhombus','Rombo'),r:t('4 equal sides, no right angles','4 lados iguales, sin ángulos rectos'),s:`<polygon class="shp" points="50,4 94,40 50,76 6,40"/>`},
+  {n:t('Parallelogram','Paralelogramo'),r:t('2 pairs of parallel sides','2 pares de lados paralelos'),s:`<polygon class="shp" points="26,14 96,14 74,66 4,66"/>`},
+  {n:t('Trapezoid / trapezium','Trapecio'),r:t('only 1 pair of parallel sides','solo 1 par de lados paralelos'),s:`<polygon class="shp" points="30,14 70,14 94,66 6,66"/>`}
+];
+const poly=[
+  {n:t('Pentagon','Pentágono'),r:t('5 sides','5 lados'),s:`<polygon class="shp" points="${P(regPts(5,50,42,36))}"/>`},
+  {n:t('Hexagon','Hexágono'),r:t('6 sides','6 lados'),s:`<polygon class="shp" points="${P(regPts(6,50,40,36,0))}"/>`},
+  {n:t('Octagon','Octágono'),r:t('8 sides (like the STOP sign)','8 lados (como la señal de PARE)'),s:`<polygon class="shp" points="${P(regPts(8,50,40,37,-67.5))}"/>`}
+];
+function cards(id,list){
+  const box=$(id);
+  list.forEach(c=>{
+    const d=document.createElement('button');d.className='card';
+    const front=`<svg viewBox="0 0 100 80">${c.s}</svg><div class="q">${t('What’s its name? 👆','¿Cómo se llama? 👆')}</div>`;
+    const back=`<svg viewBox="0 0 100 80">${c.s}</svg><div class="nm">${c.n}</div><div class="rl">${c.r}</div>`;
+    d.innerHTML=front;
+    d.onclick=()=>{d.classList.toggle('open');d.innerHTML=d.classList.contains('open')?back:front};
+    box.appendChild(d);
+  });
+}
+cards('#cTriS',triS);cards('#cTriA',triA);cards('#cQuad',quad);cards('#cPoly',poly);
+
+function drawPerp(){
+  const a=+$('#perpR').value,cx=170,cy=150,L=120,r=a*Math.PI/180;
+  const x2=cx+L*Math.cos(r),y2=cy-L*Math.sin(r);
+  const ar=34,ax=cx+ar*Math.cos(r),ay=cy-ar*Math.sin(r);
+  const mark=a===90?`<path d="M${cx+16} ${cy} V${cy-16} H${cx}" fill="none" stroke="var(--red)" stroke-width="3"/>`:`<path d="M${cx+ar} ${cy} A${ar} ${ar} 0 0 0 ${ax.toFixed(1)} ${ay.toFixed(1)}" fill="none" stroke="var(--c4)" stroke-width="3"/>`;
+  $('#perp').innerHTML=`<svg viewBox="0 0 340 175"><line x1="20" y1="${cy}" x2="320" y2="${cy}" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/><line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--c2)" stroke-width="5" stroke-linecap="round"/>${mark}<circle cx="${cx}" cy="${cy}" r="6" fill="var(--ink)"/><text class="lbl" x="${cx+40}" y="${cy-40}">${a}°</text></svg>`;
+  let o;
+  if(a<90)o=t('<b>Acute</b> angle: less than 90°. They are not perpendicular.','Ángulo <b>agudo</b> <span class="wd">(acute)</span>: menos de 90°. No son perpendiculares.');
+  else if(a===90)o=t('🎉 <b>Right angle</b> of 90°! The lines are <b>PERPENDICULAR</b>. They make a perfect corner, like the corner of a notebook.','🎉 ¡Ángulo <b>recto</b> <span class="wd">(right angle)</span> de 90°! Las líneas son <b>PERPENDICULARES</b>. Forman una esquina perfecta, como la de un cuaderno.');
+  else if(a<180)o=t('<b>Obtuse</b> angle: more than 90°. They are not perpendicular.','Ángulo <b>obtuso</b> <span class="wd">(obtuse)</span>: más de 90°. No son perpendiculares.');
+  else o=t('<b>Straight angle</b> of 180°: it’s just one straight line! No corner.','Ángulo <b>llano</b> <span class="wd">(straight angle)</span> de 180°: ¡es una sola línea recta! No forman esquina.');
+  $('#perpOut').innerHTML=o;
+}
+$('#perpR').oninput=drawPerp;drawPerp();
+
+/* ---------- Topic 3 ---------- */
+function drawArea(){
+  const L=+$('#aL').value,W=+$('#aW').value,c=30,o=24;
+  $('#aLv').textContent=L+' m';$('#aWv').textContent=W+' m';
+  let s=`<svg viewBox="0 0 ${o*2+8*c} ${o*2+8*c}">`,k=0;
+  for(let j=0;j<W;j++)for(let i=0;i<L;i++){k++;s+=`<rect x="${o+i*c}" y="${o+j*c}" width="${c}" height="${c}" fill="color-mix(in srgb,var(--c3) 22%,transparent)" stroke="var(--line)"/><text x="${o+i*c+c/2}" y="${o+j*c+c/2+5}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">${k}</text>`}
+  s+=`<rect x="${o}" y="${o}" width="${L*c}" height="${W*c}" fill="none" stroke="var(--red)" stroke-width="4"/><text class="lbl" x="${o+L*c/2}" y="${o-6}" text-anchor="middle">${L} m</text><text class="lbl" x="${o+L*c+6}" y="${o+W*c/2+5}">${W} m</text></svg>`;
+  $('#areaSvg').innerHTML=s;
+  const sq=L===W?t('It’s a <b>square</b>! ','¡Es un <b>cuadrado</b>! '):'';
+  $('#areaOut').innerHTML=`${sq}<span style="color:var(--red);font-weight:800">${t('Perimeter','Perímetro')}</span> ${t('(red border)','(borde rojo)')} = ${L} + ${W} + ${L} + ${W} = <b>${2*L+2*W} m</b><br><span style="color:var(--c3);font-weight:800">${t('Area','Área')}</span> ${t('(squares)','(cuadritos)')} = ${L} × ${W} = <b>${L*W} m²</b>`;
+}
+['#aL','#aW'].forEach(i=>$(i).oninput=drawArea);drawArea();
+
+const polyNames={3:t('triangle','triángulo'),4:t('square','cuadrado'),5:t('pentagon','pentágono'),6:t('hexagon','hexágono'),7:t('heptagon','heptágono'),8:t('octagon','octágono')};
+function drawPoly(){
+  const n=+$('#pN').value,sl=+$('#pS').value;
+  $('#pNv').textContent=n;$('#pSv').textContent=sl+' m';
+  const p=regPts(n,110,110,72,n===4?-45:-90);
+  let s=`<svg viewBox="0 0 220 220"><polygon class="shp" points="${P(p)}"/>`;
+  p.forEach((a,i)=>{const b=p[(i+1)%n],mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,dx=mx-110,dy=my-110,d=Math.hypot(dx,dy);s+=`<text class="lbl" font-size="13" x="${(mx+dx/d*16).toFixed(1)}" y="${(my+dy/d*16+5).toFixed(1)}" text-anchor="middle">${sl}</text>`});
+  $('#polySvg').innerHTML=s+'</svg>';
+  $('#polyOut').innerHTML=`${t('A','Un')} <b>${polyNames[n]}</b> ${t(`has ${n} sides.`,`tiene ${n} lados.`)}<br>${t('Perimeter','Perímetro')} = ${Array(n).fill(sl).join(' + ')} = ${n} × ${sl} = <b>${n*sl} m</b>`;
+}
+['#pN','#pS'].forEach(i=>$(i).oninput=drawPoly);drawPoly();
+
+function drawVol(){
+  const L=+$('#vL').value,W=+$('#vW').value,H=+$('#vH').value,c=16;
+  $('#vLv').textContent=L;$('#vWv').textContent=W;$('#vHv').textContent=H;
+  let h='';
+  for(let k=1;k<=H;k++){
+    let s=`<svg viewBox="0 0 ${L*c+4} ${W*c+4}" style="width:${L*c+4}px">`;
+    for(let j=0;j<W;j++)for(let i=0;i<L;i++)s+=`<rect x="${2+i*c}" y="${2+j*c}" width="${c-2}" height="${c-2}" rx="3" fill="var(--c3)" opacity="${.45+.55*k/H}"/>`;
+    h+=`<div style="text-align:center;font-size:.8rem;font-weight:700;margin:4px">${s}</svg><div>${t('Layer','Capa')} ${k}</div></div>`;
+  }
+  $('#volLayers').innerHTML=h;
+  $('#volOut').innerHTML=t(`Each layer: ${L} × ${W} = <b>${L*W} cubes</b>. There ${H>1?'are':'is'} ${H} layer${H>1?'s':''}.<br>Volume = length × width × height = ${L} × ${W} × ${H} = <b>${L*W*H} m³</b>`,`Cada capa: ${L} × ${W} = <b>${L*W} cubitos</b>. Hay ${H} capa${H>1?'s':''}.<br>Volumen = largo × ancho × alto = ${L} × ${W} × ${H} = <b>${L*W*H} m³</b>`);
+}
+['#vL','#vW','#vH'].forEach(i=>$(i).oninput=drawVol);drawVol();
+
+function drawTri(){
+  const B=+$('#tB').value,H=+$('#tH').value,c=30,o=20,ax=o+B*c*0.4,y0=o,y1=o+H*c;
+  $('#tBv').textContent=B+' m';$('#tHv').textContent=H+' m';
+  $('#tSvg').innerHTML=`<svg viewBox="0 0 ${o*2+10*c} ${o*2+6*c+20}"><rect x="${o}" y="${y0}" width="${B*c}" height="${H*c}" fill="color-mix(in srgb,var(--c4) 18%,transparent)" stroke="var(--c4)" stroke-width="2" stroke-dasharray="6 4"/><polygon points="${o},${y1} ${o+B*c},${y1} ${ax},${y0}" fill="color-mix(in srgb,var(--c3) 45%,transparent)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><line x1="${ax}" y1="${y0}" x2="${ax}" y2="${y1}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/><text class="lbl" x="${o+B*c/2}" y="${y1+20}" text-anchor="middle">base ${B} m</text><text class="lbl" x="${o+B*c+6}" y="${y0+H*c/2+5}">${H} m</text></svg>`;
+  $('#tOut').innerHTML=t(`Rectangle (dotted): ${B} × ${H} = ${B*H} m².<br>The triangle fills <b>half</b> of it: ${B*H} ÷ 2 = <b>${B*H/2} m²</b>`,`Rectángulo (punteado): ${B} × ${H} = ${B*H} m².<br>El triángulo ocupa la <b>mitad</b>: ${B*H} ÷ 2 = <b>${B*H/2} m²</b>`);
+}
+['#tB','#tH'].forEach(i=>$(i).oninput=drawTri);drawTri();
+function drawShade(){
+  const B=+$('#sB').value;let S=+$('#sS').value;
+  if(S>B-2){S=B-2;$('#sS').value=S}
+  $('#sBv').textContent=B;$('#sSv').textContent=S;
+  $('#sSvg').innerHTML=figShade(B,B,S,'');
+  $('#sOut').innerHTML=t(`Big square: ${B} × ${B} = ${B*B}<br>Hole: ${S} × ${S} = ${S*S}<br>Shaded region: ${B*B} − ${S*S} = <b>${B*B-S*S}</b> square units`,`Cuadrado grande: ${B} × ${B} = ${B*B}<br>Hueco: ${S} × ${S} = ${S*S}<br>Región sombreada: ${B*B} − ${S*S} = <b>${B*B-S*S}</b> unidades cuadradas`);
+}
+['#sB','#sS'].forEach(i=>$(i).oninput=drawShade);drawShade();
+
+/* ---------- Topic 4 ---------- */
+function divisors(n){const d=[];for(let i=1;i<=n;i++)if(n%i===0)d.push(i);return d}
+function drawDiv(){
+  const n=Math.max(1,Math.min(100,parseInt($('#dN').value)||1));
+  const d=divisors(n),pairs=d.filter(a=>a*a<=n).map(a=>[a,n/a]);
+  let h=`<div><b>${t('Divisors of','Divisores de')} ${n}:</b><br>${d.map(x=>`<span class="nchip hl">${x}</span>`).join('')}</div><div style="margin-top:8px"><b>${t('Pairs:','Parejas:')}</b></div><div class="row" style="align-items:flex-end">`;
+  pairs.forEach(([a,b])=>{
+    let dots='';
+    if(n<=60){const s=9;dots=`<svg viewBox="0 0 ${b*s+2} ${a*s+2}" style="width:${b*s+2}px">`;for(let r=0;r<a;r++)for(let c2=0;c2<b;c2++)dots+=`<circle cx="${c2*s+5}" cy="${r*s+5}" r="3.2" fill="var(--c4)"/>`;dots+='</svg>'}
+    h+=`<div style="background:var(--soft);border-radius:10px;padding:6px 8px;text-align:center">${dots}<div style="font-weight:800">${a} × ${b}</div></div>`;
+  });
+  h+='</div>';
+  if(d.length===2)h+=`<p style="margin:.6rem 0 0">${t(`It has only 2 divisors: ${n} is a <b>prime</b> number!`,`Solo tiene 2 divisores: ¡${n} es un número <b>primo</b>!`)}</p>`;
+  $('#dOut').innerHTML=h;
+}
+$('#dN').oninput=drawDiv;drawDiv();
+const ordEn=['1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th'];
+function drawMul(){
+  const n=Math.max(1,Math.min(12,parseInt($('#mN').value)||1));
+  $('#mOut').innerHTML=`<b>${t('Multiples of','Múltiplos de')} ${n}:</b><br>`+ordEn.map((o,i)=>`<span class="nchip ${i<3?'hl':''}"><small>${t(o,(i+1)+'º')}</small>${n*(i+1)}</span>`).join('')+`<p style="margin:.5rem 0 0">${t(`The <b>third</b> multiple of ${n} is ${n} × 3 = <b>${n*3}</b>. And they go on forever!`,`El <b>tercer</b> múltiplo de ${n} es ${n} × 3 = <b>${n*3}</b>. ¡Y siguen sin fin!`)}</p>`;
+}
+$('#mN').oninput=drawMul;drawMul();
+function gcd(a,b){return b?gcd(b,a%b):a}
+function drawJump(){
+  const a=+$('#jA').value,b=+$('#jB').value,max=24,u=20,o=20,y=70,l=a*b/gcd(a,b);
+  let s=`<svg viewBox="0 0 ${o*2+max*u} 140"><line x1="${o}" y1="${y}" x2="${o+max*u}" y2="${y}" stroke="var(--ink)" stroke-width="2"/>`;
+  for(let i=0;i<=max;i++){const c=i>0&&i%l===0;s+=`<line x1="${o+i*u}" y1="${y-5}" x2="${o+i*u}" y2="${y+5}" stroke="var(--ink)"/>`+(c?'':`<text x="${o+i*u}" y="${y+22}" text-anchor="middle" font-size="11" font-weight="800" fill="var(--muted)">${i}</text>`)}
+  for(let i=0;i+a<=max;i+=a)s+=`<path d="M${o+i*u} ${y} Q${o+(i+a/2)*u} ${y-a*9-12} ${o+(i+a)*u} ${y}" fill="none" stroke="var(--c4)" stroke-width="2.5"/>`;
+  for(let i=0;i+b<=max;i+=b)s+=`<path d="M${o+i*u} ${y} Q${o+(i+b/2)*u} ${y+b*9+12} ${o+(i+b)*u} ${y}" fill="none" stroke="var(--c5)" stroke-width="2.5"/>`;
+  for(let i=l;i<=max;i+=l)s+=`<circle cx="${o+i*u}" cy="${y}" r="11" fill="var(--hl)" stroke="var(--ink)"/><text x="${o+i*u}" y="${y+4}" text-anchor="middle" font-size="11" font-weight="800" fill="#3a2d00">${i}</text>`;
+  $('#jSvg').innerHTML=s+'</svg>';
+  const mA=[...Array(Math.floor(max/a))].map((_,i)=>a*(i+1)).join(', '),mB=[...Array(Math.floor(max/b))].map((_,i)=>b*(i+1)).join(', ');
+  $('#jOut').innerHTML=`<span style="color:var(--c4);font-weight:800">${t(`Frog A (by ${a}s):`,`Rana A (de ${a} en ${a}):`)}</span> ${mA}<br><span style="color:var(--c5);font-weight:800">${t(`Frog B (by ${b}s):`,`Rana B (de ${b} en ${b}):`)}</span> ${mB}<br>⭐ ${t('First time they land together:','Primera vez que caen juntas:')} <b>${l}</b>`;
+}
+['#jA','#jB'].forEach((id,k)=>{const s=$(id);for(let i=2;i<=6;i++)s.innerHTML+=`<option ${i===(k?3:2)?'selected':''}>${i}</option>`;s.onchange=drawJump});
+drawJump();
+
+/* ---------- Topic 5 ---------- */
+function drawDv(){
+  const raw=String(Math.abs(parseInt($('#dvN').value)||0));
+  const ds=raw.split('').map(Number),last=ds[ds.length-1],sum=ds.reduce((a,b)=>a+b,0),n=+raw;
+  $('#dvDigits').innerHTML=raw.split('').map((c,i)=>i===raw.length-1?`<span class="last">${c}</span>`:c).join('');
+  const r=[
+    {d:2,ok:last%2===0,y:t(`It ends in ${last}, which is even.`,`Termina en ${last}, que es par.`),n:t(`It ends in ${last}, which is odd.`,`Termina en ${last}, que es impar.`)},
+    {d:3,ok:sum%3===0,y:t(`${ds.join(' + ')} = ${sum}, and ${sum} is in the 3 times table.`,`${ds.join(' + ')} = ${sum}, y ${sum} está en la tabla del 3.`),n:t(`${ds.join(' + ')} = ${sum}, and ${sum} is not in the 3 times table.`,`${ds.join(' + ')} = ${sum}, y ${sum} no está en la tabla del 3.`)},
+    {d:5,ok:last===0||last===5,y:t(`It ends in ${last}.`,`Termina en ${last}.`),n:t(`It ends in ${last}, not in 0 or 5.`,`Termina en ${last}, no en 0 ni 5.`)},
+    {d:10,ok:last===0,y:t('It ends in 0.','Termina en 0.'),n:t(`It ends in ${last}, not in 0.`,`Termina en ${last}, no en 0.`)}
+  ];
+  $('#dvRules').innerHTML=r.map(x=>`<div class="rule ${x.ok?'yes':'no'}"><h4>${x.ok?'✅':'❌'} ${t('By','Entre')} ${x.d}</h4><div>${x.ok?x.y:x.n}</div>${x.ok?`<div style="font-weight:800;margin-top:4px">${n} ÷ ${x.d} = ${n/x.d}</div>`:''}</div>`).join('');
+}
+$('#dvN').oninput=drawDv;drawDv();
+
+/* ---------- Topic 6 ---------- */
+const pg=$('#pGrid');
+const pIdle=t('Tap a number.','Toca un número.');
+$('#pOut').innerHTML=pIdle;
+for(let i=1;i<=50;i++){const b=document.createElement('button');b.textContent=i;b.onclick=()=>revealN(b,i,true);pg.appendChild(b)}
+function cls(i){return i===1?'one':divisors(i).length===2?'pr':'co'}
+function revealN(b,i,say){
+  b.className=cls(i);
+  if(!say)return;
+  const d=divisors(i),pr=d.length===2;
+  $('#pOut').innerHTML=i===1?t('<b>1</b> has only one divisor (1). It is neither prime nor composite.','<b>1</b> solo tiene un divisor (el 1). No es primo ni compuesto.'):t(`Divisors of <b>${i}</b>: ${d.join(', ')} → it has ${d.length} divisors, so it is <b>${pr?'PRIME':'COMPOSITE'}</b>.`,`Divisores de <b>${i}</b>: ${d.join(', ')} → tiene ${d.length} divisores, así que es <b>${pr?'PRIMO':'COMPUESTO'}</b>.`);
+}
+$('#pAll').onclick=()=>pg.querySelectorAll('button').forEach((b,i)=>revealN(b,i+1,false));
+$('#pHide').onclick=()=>{pg.querySelectorAll('button').forEach(b=>b.className='');$('#pOut').innerHTML=pIdle};
+
+/* ---------- Topic 7 ---------- */
+let fRows=[],fCur=0,fStart=36;
+function smallestPrime(n){for(let p=2;p<=n;p++)if(n%p===0)return p}
+function fResetF(){fStart=Math.max(2,Math.min(500,parseInt($('#fN').value)||2));fCur=fStart;fRows=[];renderF()}
+function renderF(){
+  $('#fTable').innerHTML=fRows.map(([n,p])=>`<tr><td>${n}</td><td>${p}</td></tr>`).join('')+`<tr><td>${fCur}</td><td></td></tr>`;
+  if(fCur===1){
+    const ps=fRows.map(r=>r[1]).join(' × ');
+    $('#fOut').innerHTML=t(`🎉 We reached 1! <b>${fStart} = ${ps}</b><br>All the numbers on the right are prime.`,`🎉 ¡Llegamos a 1! <b>${fStart} = ${ps}</b><br>Todos los números de la derecha son primos.`);
+    $('#fStep').disabled=true;
+  }else{
+    $('#fOut').innerHTML=fRows.length?t(`Now ${fCur}. Which prime divides it? Tap “Next step”.`,`Ahora ${fCur}. ¿Entre qué primo se divide? Toca “Siguiente paso”.`):t(`What is the smallest prime that divides ${fCur}? Hint: check 2, then 3, then 5…`,`¿Cuál es el primo más pequeño que divide a ${fCur}? Pista: revisa 2, luego 3, luego 5…`);
+    $('#fStep').disabled=false;
+  }
+}
+$('#fStep').onclick=()=>{if(fCur===1)return;const p=smallestPrime(fCur);fRows.push([fCur,p]);fCur/=p;renderF()};
+$('#fReset').onclick=fResetF;$('#fN').onchange=fResetF;fResetF();
+
+/* ---------- Topic 8 ---------- */
+const units=['km','hm','dam','m','dm','cm','mm'],fac=[1000,100,10,1,0.1,0.01,0.001];
+$('#stairs').innerHTML=units.map((u,i)=>`<div class="${u==='m'?'m':''}" style="height:${30+(6-i)*14}px">${u}</div>`).join('');
+function fmt(x){return Number(x.toPrecision(10)).toLocaleString(LANG==='es'?'es-CO':'en-US',{maximumFractionDigits:3})}
+function drawU(){
+  const v=parseFloat($('#uV').value)||0,u=$('#uU').value,m=v*fac[units.indexOf(u)];
+  $('#uOut').innerHTML=`<span class="big">${fmt(v)} ${u} = ${fmt(m)} m</span><br>`+units.map((x,i)=>`<span class="nchip ${x==='m'?'hl':''}">${fmt(m/fac[i])} ${x}</span>`).join('');
+}
+window.drawU=drawU;
+$('#uV').oninput=drawU;$('#uU').onchange=drawU;drawU();
+function jugSVG(ml,showFill){
+  const top=30,bot=210,h=(bot-top)*ml/1000;
+  let s=`<svg viewBox="0 0 220 230"><defs><clipPath id="jc${showFill?1:0}"><path d="M40 ${top} L170 ${top} L155 ${bot} L55 ${bot} Z"/></clipPath></defs>`;
+  if(showFill)s+=`<rect x="30" y="${bot-h}" width="160" height="${h}" fill="var(--c8)" opacity=".55" clip-path="url(#jc1)"/>`;
+  s+=`<path d="M40 ${top} L170 ${top} L155 ${bot} L55 ${bot} Z" fill="none" stroke="var(--ink)" stroke-width="3"/><path d="M40 ${top+10} H14 V${top+80} H44" fill="none" stroke="var(--ink)" stroke-width="3"/>`;
+  for(let k=1;k<=10;k++){const y=bot-(bot-top)*k/10;s+=`<line x1="150" y1="${y}" x2="162" y2="${y}" stroke="var(--ink)" stroke-width="2"/><text x="146" y="${y+4}" text-anchor="end" font-size="10" font-weight="700" fill="var(--ink)">${k*100} ml</text>`}
+  s+=`<text x="174" y="${top+4}" font-size="12" font-weight="800" fill="var(--red)">MAX</text>`;
+  return s+'</svg>';
+}
+function drawJug(){
+  const v=+$('#jugR').value;$('#jug').innerHTML=jugSVG(v,true);
+  $('#jugOut').innerHTML=v===1000?t('🎉 Full! It has <b>1000 ml = 1 L</b>, its maximum capacity.','🎉 ¡Llena! Tiene <b>1000 ml = 1 L</b>, su capacidad máxima.'):t(`It has <b>${v} ml</b>. To reach MAX you need 1000 − ${v} = <b>${1000-v} ml</b> more.`,`Tiene <b>${v} ml</b>. Para llegar al MAX faltan 1000 − ${v} = <b>${1000-v} ml</b>.`);
+}
+$('#jugR').oninput=drawJug;drawJug();
+
+/* ---------- Question figures ---------- */
+const P3=makePlane(6,4,48);
+const q3o=[[4,4],[5,3],[6,3],[6,2],[4,2]],q3i=[[1,3],[2,2],[3,2],[3,1],[1,1]];
+const lab=(arr,names,P,dx,dy)=>arr.map((p,i)=>`<text class="lbl" x="${P.X(p[0])+dx[i]}" y="${P.Y(p[1])+dy[i]}">${names[i]}</text>`).join('');
+const fig3=`<svg viewBox="0 0 ${P3.W} ${P3.H}">${P3.g}<polygon points="${pts(q3o,P3)}" fill="none" stroke="var(--ink)" stroke-width="3"/><polygon points="${pts(q3i,P3)}" fill="var(--imgfill)" stroke="var(--ink)" stroke-width="2"/>${lab(q3o,['A','B','C','D','E'],P3,[-4,-4,6,6,-16],[-8,22,-6,20,20])}${lab(q3i,['A’','B’','C’','D’','E’'],P3,[-8,-6,4,4,-20],[-8,-10,-10,22,22])}</svg>`;
+const oct=P(regPts(8,55,55,48,-67.5));
+const fig4=`<svg viewBox="0 0 440 112"><polygon points="${oct}" fill="#c62828" stroke="#fff" stroke-width="3"/><text x="55" y="64" text-anchor="middle" font-size="22" font-weight="800" fill="#fff" font-family="Nunito,sans-serif">STOP</text><polygon points="165,8 215,100 115,100" fill="none" stroke="var(--ink)" stroke-width="7" stroke-linejoin="round"/><text x="165" y="90" text-anchor="middle" font-size="44" font-weight="900" fill="var(--ink)">!</text><rect x="250" y="6" width="68" height="100" rx="4" fill="none" stroke="var(--ink)" stroke-width="4"/><text x="284" y="28" text-anchor="middle" font-size="14" font-weight="900" fill="var(--ink)">SPEED</text><circle cx="284" cy="56" r="17" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="284" y="63" text-anchor="middle" font-size="18" font-weight="900" fill="var(--ink)">10</text><text x="284" y="96" text-anchor="middle" font-size="13" font-weight="900" fill="var(--ink)">LIMIT</text><polygon points="385,6 434,56 385,106 336,56" fill="none" stroke="var(--ink)" stroke-width="4"/><text x="385" y="70" text-anchor="middle" font-size="38">🚶</text></svg>`;
+const fig7=`<div style="max-width:200px;width:100%">${jugSVG(0,false)}</div>`;
+const fig10=`<div class="ladders"><div><div class="who">EMMA</div><table class="ladder"><tr><td>60</td><td class="bad">10</td></tr><tr><td>6</td><td class="bad">6</td></tr><tr><td>1</td><td></td></tr></table><div class="res">60 = 10 × 6</div></div><div><div class="who">MARTINA</div><table class="ladder"><tr><td>60</td><td>2</td></tr><tr><td>30</td><td>2</td></tr><tr><td>15</td><td>3</td></tr><tr><td>5</td><td>5</td></tr><tr><td>1</td><td></td></tr></table><div class="res">60 = 2 × 2 × 3 × 5</div></div></div>`;
+const pent=regPts(5,90,82,62);
+const fig12=`<svg viewBox="0 0 180 160" style="max-width:200px"><polygon points="${P(pent)}" fill="none" stroke="var(--ink)" stroke-width="3"/>${pent.map((a,i)=>{const b=pent[(i+1)%5],mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,dx=mx-90,dy=my-82,d=Math.hypot(dx,dy);return`<text class="lbl" font-size="12" text-anchor="middle" x="${(mx+dx/d*15).toFixed(1)}" y="${(my+dy/d*15+4).toFixed(1)}">9 ft</text>`}).join('')}</svg>`;
+let bricks='';for(let r=0;r<10;r++)for(let c=-1;c<5;c++){const x=20+c*30+(r%2?15:0);bricks+=`<rect x="${x}" y="${10+r*14}" width="30" height="14" fill="none" stroke="var(--ink)" stroke-width="1.2"/>`}
+const fig13=`<svg viewBox="0 0 200 175" style="max-width:220px"><defs><clipPath id="wc"><rect x="20" y="10" width="140" height="140"/></clipPath></defs><g clip-path="url(#wc)">${bricks}</g><rect x="20" y="10" width="140" height="140" fill="none" stroke="var(--ink)" stroke-width="3"/><text class="lbl" x="90" y="168" text-anchor="middle">12 m</text><text class="lbl" x="166" y="84">12 m</text></svg>`;
+const fig14=`<svg viewBox="0 0 250 170" style="max-width:270px"><polygon points="20,50 160,50 160,150 20,150" fill="color-mix(in srgb,var(--c3) 15%,transparent)" stroke="var(--ink)" stroke-width="3"/><polygon points="20,50 60,20 200,20 160,50" fill="none" stroke="var(--ink)" stroke-width="3"/><polygon points="160,50 200,20 200,120 160,150" fill="none" stroke="var(--ink)" stroke-width="3"/><text class="lbl" x="90" y="166" text-anchor="middle">8 m long</text><text class="lbl" x="204" y="90">3 m</text><text class="lbl" x="204" y="106" font-size="11">deep</text><text class="lbl" x="130" y="14" text-anchor="middle">5 m wide</text></svg>`;
+
+function figRect(w,h,u){
+  const s=Math.min(200/w,120/h),W=w*s,H=h*s,x=50,y=24,sq=w===h;
+  return `<svg viewBox="0 0 ${W+110} ${H+60}" style="max-width:300px"><rect x="${x}" y="${y}" width="${W}" height="${H}" fill="color-mix(in srgb,var(--c3) 15%,transparent)" stroke="var(--ink)" stroke-width="3"/><text class="lbl" x="${x+W/2}" y="${y-6}" text-anchor="middle">${w} ${u}</text><text class="lbl" x="${x-6}" y="${y+H/2+5}" text-anchor="end">${h} ${u}</text>${sq?`<text class="lbl" x="${x+W+6}" y="${y+H/2+5}">${h} ${u}</text><text class="lbl" x="${x+W/2}" y="${y+H+22}" text-anchor="middle">${w} ${u}</text>`:''}</svg>`;
+}
+function figTri(b,h,u){
+  const s=Math.min(240/b,110/h),W=b*s,H=h*s,x=20,y=14,ax=x+W*0.4;
+  return `<svg viewBox="0 0 ${W+40} ${H+50}" style="max-width:300px"><polygon points="${x},${y+H} ${x+W},${y+H} ${ax},${y}" fill="color-mix(in srgb,var(--c3) 15%,transparent)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><line x1="${ax}" y1="${y}" x2="${ax}" y2="${y+H}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4"/><path d="M${ax} ${y+H-12} h12 v12" fill="none" stroke="var(--ink)" stroke-width="2"/><text class="lbl" x="${ax+8}" y="${y+H/2+5}">${h} ${u}</text><text class="lbl" x="${x+W/2}" y="${y+H+24}" text-anchor="middle">${b} ${u}</text></svg>`;
+}
+function figShade(W0,H0,s0,u){
+  const k=Math.min(200/W0,150/H0),W=W0*k,H=H0*k,s=s0*k,x=40,y=10;
+  return `<svg viewBox="0 0 ${W+70} ${H+44}" style="max-width:260px"><rect x="${x}" y="${y}" width="${W}" height="${H}" fill="var(--muted)" stroke="var(--ink)" stroke-width="3"/><rect x="${x+(W-s)/2}" y="${y+(H-s)/2}" width="${s}" height="${s}" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/><text class="lbl" x="${x+W/2}" y="${y+(H+s)/2-6}" text-anchor="middle">${s0}</text><text class="lbl" x="${x+(W+s)/2+4}" y="${y+H/2+5}">${s0}</text><text class="lbl" x="${x-6}" y="${y+H/2+5}" text-anchor="end">${H0}</text><text class="lbl" x="${x+W/2}" y="${y+H+24}" text-anchor="middle">${W0}${u?' '+u:''}</text></svg>`;
+}
+function figCube(){
+  const HM=[[1,2,2,2,4],[2,3,3,3,4],[4,4,4,4,4]],ox=160,oy=330,ux=26,uy=15,uz=30;
+  const pr=(i,j,z)=>[ox+(i-j)*ux,oy-(i+j)*uy-z*uz];
+  const pg=(a,c)=>`<polygon class="${c}" points="${a.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}"/>`;
+  const cs=[];HM.forEach((row,j)=>row.forEach((h,i)=>{for(let k=0;k<h;k++)cs.push([i,j,k])}));
+  cs.sort((a,b)=>(b[0]+b[1]-b[2])-(a[0]+a[1]-a[2]));
+  let s='';
+  cs.forEach(([i,j,k])=>{
+    s+=pg([pr(i,j,k),pr(i,j+1,k),pr(i,j+1,k+1),pr(i,j,k+1)],'cbl');
+    s+=pg([pr(i,j,k),pr(i+1,j,k),pr(i+1,j,k+1),pr(i,j,k+1)],'cbf');
+    s+=pg([pr(i,j,k+1),pr(i+1,j,k+1),pr(i+1,j+1,k+1),pr(i,j+1,k+1)],'cbt');
+  });
+  const E=[[[0,0,0],[5,0,0]],[[5,0,0],[5,0,5]],[[5,0,5],[5,5,5]],[[5,5,5],[0,5,5]],[[0,5,5],[0,5,0]],[[0,5,0],[0,0,0]],[[0,0,0],[0,0,5]],[[0,0,5],[5,0,5]],[[0,0,5],[0,5,5]]];
+  E.forEach(([a,b])=>{const p=pr(...a),q=pr(...b);s+=`<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="var(--c4)" stroke-width="2" stroke-dasharray="6 5"/>`});
+  const L1=pr(2.5,0,0),L2=pr(0,2.5,0),L3=pr(0,0,2.5);
+  s+=`<text class="lbl" x="${L1[0]+10}" y="${L1[1]+22}">5</text><text class="lbl" x="${L2[0]-18}" y="${L2[1]+22}">5</text><text class="lbl" x="${L3[0]-6}" y="${L3[1]}" text-anchor="end">5</text>`;
+  return `<svg viewBox="0 0 320 360" style="max-width:320px">${s}</svg>`;
+}
+const tbl15=(a,b,c)=>`<table><tr><th>${a}</th><th>💊 ${b}</th><th>🥄 ${c}</th></tr>`+[['6:00 a.m.',1,1],['7:00 a.m.',0,0],['8:00 a.m.',1,0],['9:00 a.m.',0,1],['10:00 a.m.',1,0],['11:00 a.m.',0,0],['12:00 p.m.',1,1]].map((r,i)=>`<tr${i===6?' class="hit"':''}><td>${r[0]}</td><td>${r[1]?'✔':''}</td><td>${r[2]?'✔':''}</td></tr>`).join('')+'</table>';
+const D8=t(`<h5>Step 1: Find the third multiple of 5</h5>The multiples of 5 are the 5 times table, in order: 1st → 5 × 1 = 5, 2nd → 5 × 2 = 10, 3rd → 5 × 3 = <b>15</b>. “Third multiple” means multiplying by 3.
+<h5>Step 2: Find the second multiple of 3</h5>1st → 3 × 1 = 3, 2nd → 3 × 2 = <b>6</b>. “Second multiple” means multiplying by 2.
+<h5>Step 3: Multiply the two results</h5>The question says Elena <i>multiplied</i> them: <b>15 × 6 = 90</b>. An easy way: 10 × 6 = 60 and 5 × 6 = 30, then 60 + 30 = 90.
+<h5>Common mistakes</h5><ul><li><b>15</b> is only step 1. Steps 2 and 3 are missing.</li><li><b>8</b> comes from adding 5 + 3.</li></ul>
+<h5>Careful: what about zero?</h5>In the diagnostic test the teacher counts 0 as the first multiple (0, 5, 10…). Counting that way, the third multiple of 5 is 10 and the second multiple of 3 is 3, so 10 × 3 = <b>30</b> (option D). Ask your teacher which way to count in this kind of question.
+<h5>Strategy</h5>In long questions, underline each part and solve it separately: “third multiple of 5” → 15; “second multiple of 3” → 6; “multiplied” → 15 × 6 = 90.`,`<h5>Paso 1: Encontrar el tercer múltiplo de 5</h5>Los múltiplos de 5 son la tabla del 5, en orden: 1º → 5 × 1 = 5, 2º → 5 × 2 = 10, 3º → 5 × 3 = <b>15</b>. “Tercer múltiplo” significa multiplicar por 3.
+<h5>Paso 2: Encontrar el segundo múltiplo de 3</h5>1º → 3 × 1 = 3, 2º → 3 × 2 = <b>6</b>. “Segundo múltiplo” significa multiplicar por 2.
+<h5>Paso 3: Multiplicar los dos resultados</h5>La pregunta dice que Elena los <i>multiplicó</i>: <b>15 × 6 = 90</b>. Una forma fácil: 10 × 6 = 60 y 5 × 6 = 30, luego 60 + 30 = 90.
+<h5>Errores comunes</h5><ul><li><b>15</b> es solo el paso 1. Faltan los pasos 2 y 3.</li><li><b>8</b> sale de sumar 5 + 3.</li></ul>
+<h5>Cuidado: ¿y el cero?</h5>En el examen diagnóstico la profesora cuenta el 0 como primer múltiplo (0, 5, 10…). Contando así, el tercer múltiplo de 5 es 10 y el segundo múltiplo de 3 es 3, entonces 10 × 3 = <b>30</b> (opción D). Pregúntale a tu profesora cómo se cuenta en este tipo de pregunta.
+<h5>Estrategia</h5>En preguntas largas, subraya cada parte y resuélvela por separado: “tercer múltiplo de 5” → 15; “segundo múltiplo de 3” → 6; “multiplicó” → 15 × 6 = 90.`);
+const D15=t(`<h5>Method 1: Make a schedule</h5>Start at 6:00 a.m., when both are taken, and keep adding hours:${tbl15('Time','Pill (every 2 h)','Syrup (every 3 h)')}The first time both check marks appear together again is at <b>12:00 p.m.</b>
+<h5>Method 2: Common multiples (faster)</h5>Multiples of 2: 2, 4, <b>6</b>, 8, 10, 12…<br>Multiples of 3: 3, <b>6</b>, 9, 12…<br>The first number in both lists is <b>6</b>, the least common multiple: both medicines meet every 6 hours. 6:00 a.m. + 6 hours = <b>12:00 p.m.</b>
+<h5>Why are the other options traps?</h5><ul><li><b>A. 8:00 a.m.</b> Only the pill (6 + 2).</li><li><b>B. 9:00 a.m.</b> Only the syrup (6 + 3).</li><li><b>C. 3:00 p.m.</b> Only the syrup (6 + 9 hours). The pill is taken at 2:00 and 4:00 p.m.</li></ul>
+<h5>Key idea</h5>When a question asks “when do both things happen at the same time?” and each one repeats every certain amount of time, look for the common multiples. Try it with the frogs above: frog A on 2 and frog B on 3. (The test says Antonio and then Antonia; it’s a typo and doesn’t change anything.)`,`<h5>Forma 1: Hacer una tabla de horarios</h5>Se empieza a las 6:00 a.m., cuando toma los dos, y se van sumando las horas:${tbl15('Hora','Pastilla (cada 2 h)','Jarabe (cada 3 h)')}La primera vez que vuelven a coincidir los dos chulitos es a las <b>12:00 p.m.</b>
+<h5>Forma 2: Múltiplos comunes (más rápida)</h5>Múltiplos de 2: 2, 4, <b>6</b>, 8, 10, 12…<br>Múltiplos de 3: 3, <b>6</b>, 9, 12…<br>El primer número que está en las dos listas es <b>6</b>, el mínimo común múltiplo: las dos medicinas coinciden cada 6 horas. 6:00 a.m. + 6 horas = <b>12:00 p.m.</b>
+<h5>¿Por qué las otras opciones son trampas?</h5><ul><li><b>A. 8:00 a.m.</b> Solo toca la pastilla (6 + 2).</li><li><b>B. 9:00 a.m.</b> Solo toca el jarabe (6 + 3).</li><li><b>C. 3:00 p.m.</b> Solo toca el jarabe (6 + 9 horas). La pastilla tocó a las 2:00 y a las 4:00 p.m.</li></ul>
+<h5>Idea clave</h5>Cuando una pregunta dice “¿cuándo pasan las dos cosas al mismo tiempo?” y cada cosa se repite cada cierto tiempo, se buscan los múltiplos comunes. Pruébalo con las ranas de arriba: rana A en 2 y rana B en 3. (El examen dice Antonio y luego Antonia; es un error de escritura y no cambia nada.)`);
+const DB=t(`<h5>Step 1: The full cube</h5>5 × 5 × 5 = <b>125</b> cubes fit in the complete cube.
+<h5>Step 2: Count the cubes that are already there, layer by layer</h5>The figure is 5 long, 3 deep and 4 tall.<ul><li>Layer 1 (bottom): 5 × 3 = <b>15</b> (full)</li><li>Layer 2: <b>14</b> (only the front corner cube is missing)</li><li>Layer 3: <b>10</b></li><li>Layer 4 (top): <b>7</b> (the back row and the right column)</li></ul>Total: 15 + 14 + 10 + 7 = <b>46</b> cubes.
+<h5>Counting trick</h5>The top faces are the “roofs” of each column. There are 15 roofs, one for each column of the 5 × 3 base: 7 at height 4, 3 at height 3, 4 at height 2 and 1 at height 1. So 7 × 4 + 3 × 3 + 4 × 2 + 1 × 1 = 28 + 9 + 8 + 1 = 46.
+<h5>Step 3: Subtract</h5>125 − 46 = <b>79</b> cubes are missing.
+<h5>Common mistake</h5>125 is the full cube, not the missing cubes. Also, to count cubes we use u³, not u². We assume the figure is solid inside, with no hidden holes.`,`<h5>Paso 1: El cubo completo</h5>5 × 5 × 5 = <b>125</b> cubos caben en el cubo completo.
+<h5>Paso 2: Contar los cubos que ya hay, piso por piso</h5>La figura mide 5 de largo, 3 de fondo y 4 de alto.<ul><li>Piso 1 (abajo): 5 × 3 = <b>15</b> (completo)</li><li>Piso 2: <b>14</b> (falta solo el cubito de la esquina de adelante)</li><li>Piso 3: <b>10</b></li><li>Piso 4 (arriba): <b>7</b> (la fila de atrás y la columna de la derecha)</li></ul>Total: 15 + 14 + 10 + 7 = <b>46</b> cubos.
+<h5>Truco para contar</h5>Las caras de arriba son los “techos” de cada columna. Hay 15 techos, uno por cada columna de la base de 5 × 3: 7 a altura 4, 3 a altura 3, 4 a altura 2 y 1 a altura 1. Entonces 7 × 4 + 3 × 3 + 4 × 2 + 1 × 1 = 28 + 9 + 8 + 1 = 46.
+<h5>Paso 3: Restar</h5>125 − 46 = <b>79</b> cubos faltan.
+<h5>Error común</h5>125 es el cubo completo, no los cubos que faltan. Además, para contar cubos se usa u³, no u². Se asume que la figura está llena por dentro, sin huecos escondidos.`);
+
+/* ---------- Questions (exam text stays in English) ---------- */
+const Q={
+1:{t:'What are the missing divisors of 18?<br>Divisors of 18: {1, 2, 3, ___, ___, 18}',o:['4 and 5.','6 and 9.','6 and 8.','9 and 12.'],a:1,
+ h:t('Type 18 in “Find the divisors” above. Look for pairs: 1 × 18, 2 × 9, 3 × …','Escribe 18 arriba en “Busca los divisores”. Busca parejas: 1 × 18, 2 × 9, 3 × …'),
+ w:t('The pairs are 1 × 18, 2 × 9 and 3 × 6. The missing ones are <b>6 and 9</b>. 4, 5, 8 and 12 do not divide 18 exactly.','Las parejas son 1 × 18, 2 × 9 y 3 × 6. Los que faltan son <b>6 y 9</b>. El 4, el 5, el 8 y el 12 no dividen exacto a 18.')},
+2:{t:'What is the condition to trace a perpendicular line?',o:['It has to be traced using a right angle.','It has to be aligned using a straight angle.','It has to be touched at one point, forming an acute angle.','It has to be traced using an obtuse angle.'],a:0,
+ h:t('Move the perpendicular lines slider. At how many degrees did “PERPENDICULAR” appear?','Mueve la barra de las líneas perpendiculares. ¿En cuántos grados apareció el mensaje “PERPENDICULARES”?'),
+ w:t('Perpendicular lines make a <b>right angle</b> of 90°, like the corner of a notebook.','Las líneas perpendiculares forman un <b>ángulo recto</b> (right angle) de 90°, como la esquina de un cuaderno.')},
+3:{t:'What type of transformation in the Cartesian plane is used?',f:fig3,o:['Translation and the figures are congruent.','Reflection and the figures are not similar.','Translation and the figures are similar.','Rotation and the figures are congruent.'],a:0,
+ h:t('Compare A(4, 4) with A’(1, 3). Did the figure flip, turn, or just slide? Did its size change?','Compara A(4, 4) con A’(1, 3). ¿La figura se volteó, giró o solo se deslizó? ¿Cambió de tamaño?'),
+ w:t('Every point moved 3 left and 1 down, without turning or flipping: it’s a <b>translation</b>. It kept exactly the same size and shape: <b>congruent</b>. (Option C says “similar”, but when they are also the same size the exact word is “congruent”.)','Cada punto se movió 3 a la izquierda y 1 hacia abajo, sin girar ni voltearse: es una <b>traslación</b>. Quedó exactamente del mismo tamaño y forma: <b>congruentes</b>. (La opción C dice “similar”, pero cuando también tienen el mismo tamaño la palabra exacta es “congruent”.)')},
+4:{t:'The names of the following polygons in order are…',f:fig4,o:['Irregular pentagon, isosceles triangle, rectangle, and rhombus.','Octagon, acute triangle, trapezium, and parallelogram.','Octagon, equilateral triangle, parallelogram, and square.','Irregular octagon, scalene triangle, rectangle, and trapezoid.'],a:2,
+ h:t('Count the sides of the STOP sign. Does the triangle have 3 equal sides?','Cuenta los lados de la señal STOP. El triángulo, ¿tiene sus 3 lados iguales?'),
+ w:t('STOP has 8 equal sides: <b>octagon</b>. The warning triangle has 3 equal sides: <b>equilateral</b>. The speed sign is a rectangle, which is also a <b>parallelogram</b>. The walking sign is a turned <b>square</b>.','STOP tiene 8 lados iguales: <b>octágono</b>. El triángulo de alerta tiene 3 lados iguales: <b>equilátero</b>. La señal de velocidad es un rectángulo, que también es un <b>paralelogramo</b>. La del peatón es un <b>cuadrado</b> girado.')},
+5:{t:'What are the factors of a prime number?',o:['1 and the multiples of the number.','1, 0, and itself.','1 and 0.','1 and itself.'],a:3,
+ h:t('Remember: a prime has only 2 divisors. And 0 can never be a divisor.','Recuerda: un primo solo tiene 2 divisores. Y el 0 nunca puede ser divisor.'),
+ w:t('A prime number can only be divided by <b>1 and itself</b>. For example, 7 only by 1 and 7.','Un número primo solo se divide entre <b>1 y él mismo</b>. Por ejemplo, el 7 solo entre 1 y 7.')},
+6:{t:'Manuela said, “5 250 is a number divisible ONLY by 5 and 10.” That statement is…',o:['True, because 5 250 is an even number.','False, because 5 250 is divisible by 10, but not by 5.','True, because the last digit of 5 250 is zero.','False, because 5 250 is divisible by 2, 3, 5, and 10.'],a:3,
+ h:t('Type 5250 in the divisibility detector. How many rules turn green?','Escribe 5250 en el detector de divisibilidad. ¿Cuántas reglas se ponen en verde?'),
+ w:t('5 250 ends in 0: it’s even (by <b>2</b>) and divisible by <b>5</b> and <b>10</b>. Also 5 + 2 + 5 + 0 = 12, which is in the 3 times table, so it is divisible by <b>3</b> too. Manuela was wrong to say “only”.','5 250 termina en 0: es par (entre <b>2</b>) y divisible entre <b>5</b> y <b>10</b>. Además 5 + 2 + 5 + 0 = 12, que está en la tabla del 3, así que también es divisible entre <b>3</b>. Manuela se equivocó al decir “solo”.')},
+7:{t:'How many milliliters of water are needed to fill the maximum capacity of the measuring jug?',f:fig7,o:['1000 ml, because it’s empty.','0 ml, because it’s full.','1 L and 150 ml, because it’s empty.','500 ml, because the volume is half.'],a:0,
+ h:t('Does the jug have any water? Where is MAX?','¿La jarra tiene agua? ¿Hasta dónde llega el MAX?'),
+ w:t('The jug is <b>empty</b> and its maximum is 1000 ml, so you need <b>1000 ml</b> to fill it.','La jarra está <b>vacía</b> y su máximo es 1000 ml, así que se necesitan <b>1000 ml</b> para llenarla.')},
+8:{t:'Elena multiplied the third multiple of 5 by the second multiple of 3. What’s Elena’s number?',o:['15.','8.','90.','30.'],a:[2,3],
+ h:t('First find the third multiple of 5 (5, 10, …) and the second multiple of 3 (3, …). Then multiply them!','Primero busca el tercer múltiplo de 5 (5, 10, …) y el segundo múltiplo de 3 (3, …). ¡Luego multiplícalos!'),
+ w:t('Counting from the number itself: 5, 10, <b>15</b> and 3, <b>6</b> → 15 × 6 = <b>90</b> (C). If you count 0 as the first multiple: 0, 5, <b>10</b> and 0, <b>3</b> → 10 × 3 = <b>30</b> (D). Both are accepted here; ask your teacher which way she counts.','Contando desde el mismo número: 5, 10, <b>15</b> y 3, <b>6</b> → 15 × 6 = <b>90</b> (C). Si se cuenta el 0 como primer múltiplo: 0, 5, <b>10</b> y 0, <b>3</b> → 10 × 3 = <b>30</b> (D). Aquí se aceptan las dos; pregúntale a tu profesora cómo cuenta ella.'),d:D8},
+9:{t:'What’s the sum of all the composite numbers between 1 and 11?',o:['37.','29.','50.','40.'],a:0,
+ h:t('Tap the numbers from 2 to 10 in the grid. Add only the orange ones (composite). Don’t forget any!','Toca los números del 2 al 10 en la cuadrícula. Suma solo los naranjas (compuestos). ¡No olvides ninguno!'),
+ w:t('The composite numbers between 1 and 11 are 4, 6, 8, 9 and 10. Added: 4 + 6 + 8 + 9 + 10 = <b>37</b>.','Los compuestos entre 1 y 11 son 4, 6, 8, 9 y 10. Sumados: 4 + 6 + 8 + 9 + 10 = <b>37</b>.')},
+10:{t:'Emma and Martina decompose into prime factors the number 60. Who’s wrong?',f:fig10,o:['Martina, because the prime factorization is for 30.','Emma, because she used composite numbers.','Neither, both procedures are correct.','Both, because Emma used composite numbers and Martina repeated a number.'],a:1,
+ h:t('Remember the golden rule: only prime numbers go on the right side of the line. Are 10 and 6 prime?','Recuerda la regla de oro: a la derecha de la línea solo van números primos. ¿10 y 6 son primos?'),
+ w:t('<b>Emma</b> was wrong: she used 10 and 6, which are composite, not prime. Martina did it right: 60 = 2 × 2 × 3 × 5. Repeating the 2 is allowed.','<b>Emma</b> se equivocó: usó 10 y 6, que son compuestos, no primos. Martina lo hizo bien: 60 = 2 × 2 × 3 × 5. Repetir el 2 está permitido.')},
+11:{t:'Marcos, Miguel, and Erika went hiking: Marcos walked 50 m, Miguel walked 2 Hm, and Erika walked 300 cm. Who has walked the most? 🥾⛰️',o:['Erika.','Miguel.','Marcos.','Neither.'],a:1,
+ h:t('Change everything to meters with the converter: 2 hm = ? m and 300 cm = ? m.','Pasa todo a metros con el convertidor: 2 hm = ? m y 300 cm = ? m.'),
+ w:t('Marcos: 50 m. Miguel: 2 hm = <b>200 m</b>. Erika: 300 cm = <b>3 m</b>. <b>Miguel</b> walked the most. Careful! 300 looks big, but it’s centimeters.','Marcos: 50 m. Miguel: 2 hm = <b>200 m</b>. Erika: 300 cm = <b>3 m</b>. El que más caminó fue <b>Miguel</b>. ¡Ojo! 300 parece grande, pero son centímetros.')},
+12:{t:'Daniel had a field shaped like a regular pentagon. Each side measures 9 feet long. What’s the perimeter of the field?',f:fig12,o:['25 ft.','45 ft.','81 ft.','36 ft.'],a:1,
+ h:t('How many sides does a pentagon have? Perimeter = sides × length.','¿Cuántos lados tiene un pentágono? Perímetro = lados × medida.'),
+ w:t('A pentagon has 5 sides: 5 × 9 = <b>45 ft</b>.','Un pentágono tiene 5 lados: 5 × 9 = <b>45 ft</b>.')},
+13:{t:'How many square meters are needed to cover the surface of a square wall of 12 meters on a side?',f:fig13,o:['120 m².','24 m².','144 m².','36 m².'],a:2,
+ h:t('Covering the surface means finding the area: side × side.','Cubrir la superficie es buscar el área: lado × lado.'),
+ w:t('Area of the square = 12 × 12 = <b>144 m²</b>.','Área del cuadrado = 12 × 12 = <b>144 m²</b>.')},
+14:{t:'How much salt is needed to fill the volume of a jar that is 3 m deep, 5 m wide, and 8 m long?',f:fig14,o:['16 m³.','360 m³.','120 m³.','125 m³.'],a:2,
+ h:t('Volume = length × width × height. Multiply the three numbers.','Volumen = largo × ancho × alto. Multiplica los tres números.'),
+ w:t('Volume = 8 × 5 × 3 = 40 × 3 = <b>120 m³</b>.','Volumen = 8 × 5 × 3 = 40 × 3 = <b>120 m³</b>.')},
+15:{t:'Antonio takes a pill and some syrup at 6:00 a.m. She takes the pill every 2 hours and the syrup every 3 hours. When will Antonia take both the pill and the syrup at the same time? 💊🥄',o:['8:00 a.m.','9:00 a.m.','3:00 p.m.','12:00 p.m.'],a:3,
+ h:t('Use the frogs with 2 and 3. How many hours until they meet? Add them to 6:00 a.m.','Usa las ranas con 2 y 3. ¿Cuántas horas pasan hasta que coinciden? Súmalas a las 6:00 a.m.'),
+ w:t('Pill: 8, 10, <b>12</b>. Syrup: 9, <b>12</b>. They meet 6 hours later (6 is the first common multiple of 2 and 3): 6:00 + 6 hours = <b>12:00 p.m.</b>','Pastilla: 8, 10, <b>12</b>. Jarabe: 9, <b>12</b>. Coinciden 6 horas después (6 es el primer múltiplo común de 2 y 3): 6:00 + 6 horas = <b>12:00 p.m.</b>'),d:D15},
+bonus:{l:'Bonus',t:t('How many cubes are missing to complete this 5 × 5 × 5 cube?','¿Cuántos cubos hacen falta para completar este cubo de 5 × 5 × 5 unidades?'),f:figCube(),o:[t('125 cubes','125 cubos'),t('46 cubes','46 cubos'),t('79 cubes','79 cubos'),t('75 cubes','75 cubos')],a:2,
+ h:t('First: how many cubes fit in the full cube? Then count the cubes that are already there, layer by layer, and subtract.','Primero: ¿cuántos cubos caben en el cubo completo? Luego cuenta los cubos que ya están, piso por piso, y resta.'),
+ w:t('Full cube: 125. Cubes already there: 46. Missing: 125 − 46 = <b>79 cubes</b>.','Cubo completo: 125. Cubos que ya hay: 46. Faltan: 125 − 46 = <b>79 cubos</b>.'),d:DB},
+d1a:{l:t('Diagnostic 1a','Diagnóstico 1a'),t:'Find the area of the square.',f:figRect(2,2,'m'),o:['16 m²','4 m²','8 m','4 m'],a:1,
+ h:t('Square: side × side. The side is 2 m. Don’t add the sides, and remember that area units have a ².','Cuadrado: lado × lado. El lado mide 2 m. No sumes los lados y recuerda que las unidades de área llevan ².'),
+ w:t('2 × 2 = <b>4 m²</b>. (4 × 4 = 16 is wrong: the side is 2, not 4.)','2 × 2 = <b>4 m²</b>. (4 × 4 = 16 está mal: el lado mide 2, no 4.)')},
+d1b:{l:t('Diagnostic 1b','Diagnóstico 1b'),t:'Find the area of the triangle.',f:figTri(8,4,'m'),o:['32 m²','12 m²','16 m²','16 m'],a:2,
+ h:t('Triangle: base × height ÷ 2. Did you divide by 2?','Triángulo: base × altura ÷ 2. ¿Dividiste entre 2?'),
+ w:t('8 × 4 = 32, and 32 ÷ 2 = <b>16 m²</b>.','8 × 4 = 32, y 32 ÷ 2 = <b>16 m²</b>.')},
+d1c:{l:t('Diagnostic 1c','Diagnóstico 1c'),t:'Find the area of the rectangle.',f:figRect(9,4,'cm'),o:['26 cm','13 cm²','36 cm²','36 cm'],a:2,
+ h:t('Rectangle: length × width. Multiply, don’t add.','Rectángulo: largo × ancho. Multiplica, no sumes.'),
+ w:t('9 × 4 = <b>36 cm²</b>. 26 cm is the perimeter (9 + 4 + 9 + 4).','9 × 4 = <b>36 cm²</b>. 26 cm es el perímetro (9 + 4 + 9 + 4).')},
+d2a:{l:t('Diagnostic 2a','Diagnóstico 2a'),t:'Write the first five multiples of 2. “Remember that zero is a multiple of every number.”',o:['1, 2, 4, 6, 8','0, 2, 4, 6, 8','2, 4, 6, 8, 10','0, 1, 2, 4, 20'],a:1,
+ h:t('Start at 0 and jump by 2: 2 × 0, 2 × 1, 2 × 2…','Empieza en 0 y salta de 2 en 2: 2 × 0, 2 × 1, 2 × 2…'),
+ w:t('<b>0, 2, 4, 6, 8</b>. 1 is not a multiple of 2.','<b>0, 2, 4, 6, 8</b>. El 1 no es múltiplo de 2.')},
+d2b:{l:t('Diagnostic 2b','Diagnóstico 2b'),t:'Write the first five multiples of 8.',o:['0, 1, 2, 4, 80','8, 16, 24, 32, 40','0, 8, 16, 24, 32','0, 2, 4, 6, 8'],a:2,
+ h:t('Start at 0 and jump by 8: 8 × 0, 8 × 1, 8 × 2…','Empieza en 0 y salta de 8 en 8: 8 × 0, 8 × 1, 8 × 2…'),
+ w:t('<b>0, 8, 16, 24, 32</b>.','<b>0, 8, 16, 24, 32</b>.')},
+d3a:{l:t('Diagnostic 3a','Diagnóstico 3a'),t:'Complete the set of divisors of 12.',o:['0, 1, 2, 3, 4, 5','1, 2, 3, 4, 6, 12','1, 2, 3, 4','0, 12, 24, 36'],a:1,
+ h:t('0 is never a divisor, and the number itself always is. Is 6 a divisor? 2 × 6 = 12.','El 0 nunca es divisor y el mismo número siempre lo es. ¿El 6 es divisor? 2 × 6 = 12.'),
+ w:t('<b>1, 2, 3, 4, 6, 12</b> (pairs 1 × 12, 2 × 6, 3 × 4).','<b>1, 2, 3, 4, 6, 12</b> (parejas 1 × 12, 2 × 6, 3 × 4).')},
+d3b:{l:t('Diagnostic 3b','Diagnóstico 3b'),t:'Complete the set of divisors of 21.',o:['0, 1, 2, 3','1, 3, 7, 21','1, 2, 3, 7, 21','1, 21'],a:1,
+ h:t('21 is odd, so 2 is not a divisor. Try 3 × 7.','21 es impar, así que el 2 no es divisor. Prueba 3 × 7.'),
+ w:t('<b>1, 3, 7, 21</b> (pairs 1 × 21 and 3 × 7).','<b>1, 3, 7, 21</b> (parejas 1 × 21 y 3 × 7).')},
+d3c:{l:t('Diagnostic 3c','Diagnóstico 3c'),t:'Complete the set of divisors of 13.',o:['0, 1','1, 13','1, 3, 13','0, 13, 26'],a:1,
+ h:t('13 is a prime number. Which two divisors does every number have?','13 es un número primo. ¿Qué dos divisores tiene todo número?'),
+ w:t('<b>1 and 13</b>. It’s a prime number.','<b>1 y 13</b>. Es un número primo.')},
+dB:{l:t('Diagnostic bonus','Bonus del diagnóstico'),t:'Bonus: Calculate the area of the shaded region.',f:figShade(10,10,3,''),o:['180','100','91','9'],a:2,
+ h:t('Area of the big square minus the area of the small square: 10 × 10 − 3 × 3.','Área del cuadrado grande menos el área del pequeño: 10 × 10 − 3 × 3.'),
+ w:t('10 × 10 = 100 and 3 × 3 = 9. Shaded region: 100 − 9 = <b>91</b>. Subtract, don’t multiply.','10 × 10 = 100 y 3 × 3 = 9. Región sombreada: 100 − 9 = <b>91</b>. Se resta, no se multiplica.')}
+};
+const state={};
+function renderQ(n){
+  const q=Q[n];
+  return `<div class="q" id="q${n}"><div class="qnum">${q.l||t('Question','Pregunta')+' '+n}</div><p class="qtext">${q.t}</p>${q.f?`<div class="fig">${q.f}</div>`:''}<div class="opts">${q.o.map((o,i)=>`<button class="opt" data-q="${n}" data-i="${i}"><b>${'ABCD'[i]}</b><span>${o}</span></button>`).join('')}</div><div class="fb" id="fb${n}"></div></div>`;
+}
+function renderAllQ(){document.querySelectorAll('.qs').forEach(box=>box.innerHTML=box.dataset.qs.split(',').map(renderQ).join(''))}
+renderAllQ();
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.opt');if(!b)return;
+  const n=b.dataset.q,i=+b.dataset.i,q=Q[n],s=state[n]||(state[n]={tries:0,done:false});
+  if(s.done)return;
+  const fb=$('#fb'+n);
+  if(Array.isArray(q.a)?q.a.includes(i):i===q.a){
+    s.done=true;b.classList.add('ok');
+    document.querySelectorAll(`.opt[data-q="${n}"]`).forEach(x=>x.disabled=true);
+    $('#q'+n).classList.add('done-ok');
+    fb.className='fb good';
+    fb.innerHTML=`<div class="mark">${s.tries===0?t('✓ Correct on the first try! ⭐','✓ ¡Correcto a la primera! ⭐'):t('✓ Great job, you got it!','✓ ¡Muy bien, lo lograste!')}</div>${q.w}${q.d?`<details class="step" open><summary>${t('Step-by-step explanation','Explicación paso a paso')}</summary>${q.d}</details>`:''}`;
+  }else{
+    s.tries++;b.classList.add('no');b.disabled=true;
+    fb.className='fb hint';
+    fb.innerHTML=`<div class="mark">${t('✗ Almost… try again','✗ Casi… intenta otra vez')}</div>💡 ${t('Hint:','Pista:')} ${q.h}`;
+  }
+  updScore();
+});
+function updScore(){
+  const v=Object.values(state),first=v.filter(s=>s.done&&s.tries===0).length,done=v.filter(s=>s.done).length,N=Object.keys(Q).length;
+  document.querySelectorAll('.tot').forEach(e=>e.textContent=N);
+  $('#sc1').textContent=first;$('#sc2').textContent=done;
+  $('#finalTxt').innerHTML=t(`⭐ ${first} of ${N} on the first try`,`⭐ ${first} de ${N} a la primera`);
+  let m;
+  if(done===N)m=first>=N-2?t('Excellent, Melanie! You’re ready for the test. 🏆','¡Excelente, Melanie! Estás lista para el examen. 🏆'):first>=Math.round(N*0.6)?t('Very good! Review the topics where you needed hints. 💪','¡Muy bien! Repasa los temas donde necesitaste pistas. 💪'):t('Good effort! Play with the examples again and restart to try once more. 🌱','¡Buen esfuerzo! Vuelve a jugar con los ejemplos y reinicia para intentarlo de nuevo. 🌱');
+  else m=done===0?t('Answer all the questions to see your result.','Responde todas las preguntas para ver tu resultado.'):t(`You have answered ${done} of ${N} questions.`,`Llevas ${done} de ${N} preguntas respondidas.`);
+  $('#finalMsg').innerHTML=m;
+}
+$('#reset').onclick=()=>{for(const k in state)delete state[k];renderAllQ();updScore();window.scrollTo({top:0})};
+updScore();
+let saved='en';try{saved=localStorage.getItem('mel-lang')||'en'}catch(e){}
+setLang(saved==='es'?'es':'en');
+</script>
+</body>
+</html>
